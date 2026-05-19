@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ac4e9e5092e23a4eadda3023d40399a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127325
+  packageName: Particle Pack
+  packageVersion: 3.1
+  assetPath: Assets/UnityTechnologies/EffectExamples/WeaponEffects/Prefabs/MuzzleFlash.prefab
+  uploadId: 691001
