@@ -2,15 +2,51 @@ using UnityEngine;
 
 public class playerHealthManager : MonoBehaviour
 {
-    [Header("Health Settings")]
-    public float maxHealth = 100f;
+    [Header("Base Health")]
+    public float baseMaxHealth = 100f;
+
+    [Header("Runtime Health")]
+    public float maxHealth;
     public float currentHealth;
 
     private bool isDead = false;
 
     void Start()
     {
+        RecalculateHealth();
+
         currentHealth = maxHealth;
+    }
+
+    public void RecalculateHealth()
+    {
+        float oldMaxHealth = maxHealth;
+
+        // Reset max health to base
+        maxHealth = baseMaxHealth;
+
+        // Apply all equipped modifiers
+        foreach (ModifierData modifier in GameManager.Instance.equippedModifiers)
+        {
+            ExtendHealthModifier healthModifier =
+                modifier as ExtendHealthModifier;
+
+            if (healthModifier != null)
+            {
+                maxHealth += healthModifier.healthBonus;
+            }
+        }
+
+        // OPTION 3: reward player when max health increases
+        float difference = maxHealth - oldMaxHealth;
+
+        if (difference > 0)
+        {
+            currentHealth += difference;
+        }
+
+        // Safety clamp
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -42,7 +78,5 @@ public class playerHealthManager : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Player died!");
-
-        // Add death animation / ragdoll / respawn here
     }
 }
