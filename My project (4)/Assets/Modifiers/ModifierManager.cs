@@ -3,12 +3,17 @@ using UnityEngine;
 public class ModifierManager : MonoBehaviour
 {
     public playerHealthManager healthManager;
-
+    public PlayerMovement playerMovement;
     void Start()
     {
         if (healthManager == null)
         {
             healthManager = FindObjectOfType<playerHealthManager>();
+        }
+
+        if (playerMovement == null)
+        {
+            playerMovement = FindObjectOfType<PlayerMovement>();
         }
 
         if (healthManager != null)
@@ -39,6 +44,11 @@ public class ModifierManager : MonoBehaviour
             {
                 healthManager.RecalculateHealth();
             }
+
+            if (playerMovement != null)
+            {
+                playerMovement.RecalculateMovement();
+            }
         }
     }
 
@@ -53,6 +63,33 @@ public class ModifierManager : MonoBehaviour
             if (healthManager != null)
             {
                 healthManager.RecalculateHealth();
+            }
+
+            if (playerMovement != null)
+            {
+                playerMovement.RecalculateMovement();
+            }
+        }
+    }
+
+    public void OnEnemyKilled()
+    {
+        if (healthManager == null)
+            return;
+
+        foreach (ModifierData modifier in GameManager.Instance.equippedModifiers)
+        {
+            lifestealerModifier lifestealModifier =
+                modifier as lifestealerModifier;
+
+            if (lifestealModifier != null)
+            {
+                healthManager.Heal(lifestealModifier.healAmount);
+
+                Debug.Log(
+                    $"Lifestealer healed player for " +
+                    $"{lifestealModifier.healAmount}"
+                );
             }
         }
     }
