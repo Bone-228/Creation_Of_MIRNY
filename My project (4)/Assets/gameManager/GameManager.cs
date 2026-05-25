@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     [Header("Player Currency")]
     public int mirium = 1000;
 
+    [Header("Permanent Currency")]
+    public int totalMirium = 0;
+
     [Header("Unlocked Modifiers")]
     public List<ModifierData> unlockedModifiers =
         new List<ModifierData>();

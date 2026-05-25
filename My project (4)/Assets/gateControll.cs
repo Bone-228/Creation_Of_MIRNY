@@ -3,20 +3,15 @@ using UnityEngine;
 public class gateControll : MonoBehaviour
 {
     public Animator gateAnimator;
-    public GameObject invisibleWall;
 
-    void Update()
+    public void OpenGate()
     {
-        if (gateAnimator != null && invisibleWall != null)
-        {
-            if (gateAnimator.GetBool("Open"))
-            {
-                invisibleWall.SetActive(false);
-            }
-            else
-            {
-                invisibleWall.SetActive(true);
-            }
-        }
+        gateAnimator.SetInteger("State", 1);
+    }
+
+    public void CloseGate()
+    {
+        gateAnimator.SetInteger("State", 0);
+        Debug.Log($"Gate {gameObject.name} closed");
     }
 }

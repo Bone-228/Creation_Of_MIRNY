@@ -6,18 +6,25 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Aiming")]
     public bool isAiming { get; private set; }
+
     private bool externalAimingOverride = false;
 
     [Header("Base Movement Speeds")]
     public float baseSlowWalkSpeed = 2f;
+
     public float baseWalkSpeed = 4f;
+
     public float baseSprintSpeed = 7f;
+
     public float baseWallRunSpeed = 8f;
 
     [Header("Runtime Movement Speeds")]
     public float slowWalkSpeed;
+
     public float walkSpeed;
+
     public float sprintSpeed;
+
     public float wallRunSpeed;
 
     private float normalMoveSpeed;
@@ -26,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Air Control")]
     public float airAcceleration = 4f;
+
     public float airDrag = 1f;
 
     [Header("Slope Handling")]
@@ -49,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
 
     bool readyToJump = true;
 
+    [Header("Double Jump")]
+    public bool canDoubleJump = false;
+
+    private bool hasDoubleJumped = false;
+
     [Header("Ground Check")]
     public float playerHeight = 2f;
 
@@ -57,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
 
     float horizontalInput;
+
     float verticalInput;
 
     Vector3 movementDirection;
@@ -89,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         if (orientation == null)
             orientation = transform;
 
-        // Apply modifiers on start
+        // Apply modifiers
         RecalculateMovement();
     }
 
@@ -97,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void RecalculateMovement()
     {
-        // Reset runtime speeds to base values
+        // Reset movement speeds
         slowWalkSpeed = baseSlowWalkSpeed;
 
         walkSpeed = baseWalkSpeed;
@@ -106,9 +120,13 @@ public class PlayerMovement : MonoBehaviour
 
         wallRunSpeed = baseWallRunSpeed;
 
-        // Apply equipped modifiers
+        // Reset abilities
+        canDoubleJump = false;
+
+        // Apply modifiers
         foreach (ModifierData modifier in GameManager.Instance.equippedModifiers)
         {
+            // Sprinter
             sprinterModifier speedModifier =
                 modifier as sprinterModifier;
 
@@ -121,6 +139,15 @@ public class PlayerMovement : MonoBehaviour
                 sprintSpeed += speedModifier.speedBonus;
 
                 wallRunSpeed += speedModifier.speedBonus;
+            }
+
+            // Double Jump
+            DoubleJumpModifier doubleJumpModifier =
+                modifier as DoubleJumpModifier;
+
+            if (doubleJumpModifier != null)
+            {
+                canDoubleJump = true;
             }
         }
 
@@ -143,6 +170,12 @@ public class PlayerMovement : MonoBehaviour
             (playerHeight * 0.5f) + 0.2f,
             whatIsGround
         );
+
+        // Reset double jump on landing
+        if (grounded)
+        {
+            hasDoubleJumped = false;
+        }
 
         myInput();
 
@@ -178,13 +211,24 @@ public class PlayerMovement : MonoBehaviour
 
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.Space) && readyToJump && grounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            readyToJump = false;
+            // Ground jump
+            if (readyToJump && grounded)
+            {
+                readyToJump = false;
 
-            Jump();
+                Jump();
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+                Invoke(nameof(ResetJump), jumpCooldown);
+            }
+            // Double jump
+            else if (canDoubleJump && !hasDoubleJumped)
+            {
+                hasDoubleJumped = true;
+
+                Jump();
+            }
         }
     }
 
@@ -220,7 +264,6 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.air;
 
-            // Prevent stale speed bug
             normalMoveSpeed = walkSpeed;
         }
     }
@@ -303,7 +346,10 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocity.z
             );
 
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(
+            Vector3.up * jumpForce,
+            ForceMode.Impulse
+        );
     }
 
     private void ResetJump()

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +10,14 @@ public class faze_handler : MonoBehaviour
 
     [Header("Faze Borders")]
     public int faze2Border = 90;
+
     public int faze3Border = 180;
+
+    public int backToSafe = 200;
 
     [Header("References")]
     public miriumPlayerCollector playerCollector;
+
     public Transform player;
 
     [Header("Teleport Destinations")]
@@ -22,7 +25,9 @@ public class faze_handler : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI fazeText;
+
     public TextMeshProUGUI playerMiriumText;
+
     public TextMeshProUGUI nextFazeBorderText;
 
     [Tooltip("Additional mirium amount text.")]
@@ -39,12 +44,16 @@ public class faze_handler : MonoBehaviour
 
     private int currentFaze = 1;
 
+    private bool runFinished = false;
+
     void Update()
     {
-        if (playerCollector == null)
+        if (playerCollector == null || runFinished)
             return;
 
         int mirium = playerCollector.collectedMirium;
+
+        // ───────────────────────── FAZE CHECKS ─────────────────────────
 
         if (currentFaze == 1 && mirium >= faze2Border)
         {
@@ -55,9 +64,19 @@ public class faze_handler : MonoBehaviour
             ActivateFaze3();
         }
 
+        // ───────────────────────── RUN FINISH ─────────────────────────
+
+        if (mirium >= backToSafe)
+        {
+            FinishRun(mirium);
+        }
+
         UpdateUI(mirium);
+
         UpdateMiriumProgress(mirium);
     }
+
+    // ───────────────────────── FAZE ACTIVATION ─────────────────────────
 
     void ActivateFaze2()
     {
@@ -87,12 +106,51 @@ public class faze_handler : MonoBehaviour
         TeleportToRandomLocation();
     }
 
+    // ───────────────────────── RUN FINISH ─────────────────────────
+
+    void FinishRun(int collectedMirium)
+    {
+        runFinished = true;
+
+        int[] percentages = { 25, 50, 75 };
+
+        int randomPercent =
+            percentages[UnityEngine.Random.Range(0, percentages.Length)];
+
+        int rewardedMirium =
+            Mathf.RoundToInt(
+                collectedMirium * (randomPercent / 100f)
+            );
+
+        // Add permanent mirium
+        GameManager.Instance.totalMirium += rewardedMirium;
+
+        Debug.Log(
+            $"RUN FINISHED!\n" +
+            $"Collected Mirium: {collectedMirium}\n" +
+            $"Reward Percent: {randomPercent}%\n" +
+            $"Permanent Mirium Earned: {rewardedMirium}\n" +
+            $"TOTAL PERMANENT MIRIUM: {GameManager.Instance.totalMirium}"
+        );
+
+        // OPTIONAL:
+        // Load menu scene
+        // Open reward screen
+        // Freeze player
+        // Restart game loop
+    }
+
+    // ───────────────────────── TELEPORT ─────────────────────────
+
     void TeleportToRandomLocation()
     {
-        if (player == null || randomDestinations == null || randomDestinations.Length == 0)
+        if (player == null ||
+            randomDestinations == null ||
+            randomDestinations.Length == 0)
             return;
 
-        List<Transform> validDestinations = new List<Transform>();
+        List<Transform> validDestinations =
+            new List<Transform>();
 
         foreach (Transform destination in randomDestinations)
         {
@@ -104,11 +162,18 @@ public class faze_handler : MonoBehaviour
 
         if (validDestinations.Count == 0)
         {
-            Debug.LogWarning("No valid random destinations assigned.");
+            Debug.LogWarning(
+                "No valid random destinations assigned."
+            );
+
             return;
         }
 
-        int randomIndex = UnityEngine.Random.Range(0, validDestinations.Count);
+        int randomIndex =
+            UnityEngine.Random.Range(
+                0,
+                validDestinations.Count
+            );
 
         Transform target = validDestinations[randomIndex];
 
@@ -117,13 +182,17 @@ public class faze_handler : MonoBehaviour
 
     void TeleportPlayer(Transform target)
     {
-        CharacterController cc = player.GetComponent<CharacterController>();
-        Rigidbody rb = player.GetComponent<Rigidbody>();
+        CharacterController cc =
+            player.GetComponent<CharacterController>();
+
+        Rigidbody rb =
+            player.GetComponent<Rigidbody>();
 
         if (cc != null)
             cc.enabled = false;
 
         player.position = target.position;
+
         player.rotation = target.rotation;
 
 #if UNITY_2017_2_OR_NEWER
@@ -133,15 +202,19 @@ public class faze_handler : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
+
             rb.angularVelocity = Vector3.zero;
         }
 
         if (cc != null)
         {
             cc.enabled = true;
+
             cc.Move(Vector3.zero);
         }
     }
+
+    // ───────────────────────── UI ─────────────────────────
 
     void UpdateUI(int mirium)
     {
@@ -157,13 +230,21 @@ public class faze_handler : MonoBehaviour
         if (nextFazeBorderText != null)
         {
             if (currentFaze == 1)
+            {
                 nextFazeBorderText.text = $"{faze2Border}";
+            }
             else if (currentFaze == 2)
+            {
                 nextFazeBorderText.text = $"{faze3Border}";
+            }
             else
-                nextFazeBorderText.text = "MAX";
+            {
+                nextFazeBorderText.text = $"SAFE";
+            }
         }
     }
+
+    // ───────────────────────── PROGRESS BAR ─────────────────────────
 
     void UpdateMiriumProgress(int mirium)
     {
@@ -174,11 +255,14 @@ public class faze_handler : MonoBehaviour
 
         if (currentFaze == 1)
         {
-            progress = (float)mirium / faze2Border;
+            progress =
+                (float)mirium / faze2Border;
         }
         else if (currentFaze == 2)
         {
-            progress = (float)(mirium - faze2Border) / (faze3Border - faze2Border);
+            progress =
+                (float)(mirium - faze2Border) /
+                (faze3Border - faze2Border);
         }
         else
         {

@@ -6,16 +6,23 @@ public class enemy_sector_checker : MonoBehaviour
     [Header("Gate Settings")]
     public gateControll[] gates;
 
-    [Header("All Gates To Reset")]
+    [Header("All Gates In Entire Level (assign manually in Inspector)")]
     public gateControll[] allGatesToClose;
 
-    private List<enemy_health> enemies = new List<enemy_health>();
+    private List<enemy_health> enemies =
+        new List<enemy_health>();
+
     private bool gateOpened = false;
 
     public int aliveEnemies;
 
     private enemy_spawner[] spawners;
 
+    // ───────────────────────── INIT ─────────────────────────
+    void Start()
+    {
+        allGatesToClose = gates;
+    }
     void Awake()
     {
         spawners = GetComponentsInChildren<enemy_spawner>();
@@ -31,14 +38,19 @@ public class enemy_sector_checker : MonoBehaviour
         faze_handler.OnFazeChanged -= ResetSector;
     }
 
+    // ───────────────────────── UPDATE ─────────────────────────
+
     void Update()
     {
         CleanAndCountEnemies();
     }
 
+    // ───────────────────────── ENEMY TRACKING ─────────────────────────
+
     void OnTriggerEnter(Collider other)
     {
-        enemy_health enemy = other.GetComponentInParent<enemy_health>();
+        enemy_health enemy =
+            other.GetComponentInParent<enemy_health>();
 
         if (enemy != null && !enemies.Contains(enemy))
         {
@@ -48,7 +60,8 @@ public class enemy_sector_checker : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        enemy_health enemy = other.GetComponentInParent<enemy_health>();
+        enemy_health enemy =
+            other.GetComponentInParent<enemy_health>();
 
         if (enemy != null)
         {
@@ -58,10 +71,13 @@ public class enemy_sector_checker : MonoBehaviour
 
     public void EnemyDied(enemy_health enemy)
     {
-        if (enemy == null) return;
+        if (enemy == null)
+            return;
 
         enemies.Remove(enemy);
     }
+
+    // ───────────────────────── ENEMY CLEANUP ─────────────────────────
 
     void CleanAndCountEnemies()
     {
@@ -82,31 +98,37 @@ public class enemy_sector_checker : MonoBehaviour
         }
     }
 
+    // ───────────────────────── OPEN GATE ─────────────────────────
+
     void OpenRandomGate()
     {
         if (gates == null || gates.Length == 0)
             return;
 
-        List<gateControll> closedGates = new List<gateControll>();
+        List<gateControll> candidates =
+            new List<gateControll>();
 
         foreach (gateControll gate in gates)
         {
-            if (gate == null || gate.gateAnimator == null)
-                continue;
-
-            if (!gate.gateAnimator.GetBool("Open"))
+            if (gate != null)
             {
-                closedGates.Add(gate);
+                candidates.Add(gate);
             }
         }
 
-        if (closedGates.Count == 0)
+        if (candidates.Count == 0)
             return;
 
-        int randomIndex = Random.Range(0, closedGates.Count);
+        int randomIndex =
+            Random.Range(0, candidates.Count);
 
-        closedGates[randomIndex].gateAnimator.SetBool("Open", true);
+        gateControll selectedGate =
+            candidates[randomIndex];
+
+        selectedGate.OpenGate();
     }
+
+    // ───────────────────────── FAZE RESET ─────────────────────────
 
     void ResetSector(int newFaze)
     {
@@ -116,6 +138,8 @@ public class enemy_sector_checker : MonoBehaviour
 
         gateOpened = false;
     }
+
+    // ───────────────────────── DELETE ENEMIES ─────────────────────────
 
     void DeleteAllEnemies()
     {
@@ -145,6 +169,8 @@ public class enemy_sector_checker : MonoBehaviour
         }
     }
 
+    // ───────────────────────── CLOSE ALL GATES ─────────────────────────
+
     void CloseAllGates()
     {
         if (allGatesToClose == null)
@@ -152,9 +178,9 @@ public class enemy_sector_checker : MonoBehaviour
 
         foreach (gateControll gate in allGatesToClose)
         {
-            if (gate != null && gate.gateAnimator != null)
+            if (gate != null)
             {
-                gate.gateAnimator.SetBool("Open", false);
+                gate.CloseGate();
             }
         }
     }
