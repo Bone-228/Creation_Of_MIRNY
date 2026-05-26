@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gateControll
   gateAnimator: {fileID: 8275840282170527394}
+  gateBlocker: {fileID: 6029960288448877773}
 --- !u!1 &5637262021536926723
 GameObject:
   m_ObjectHideFlags: 0

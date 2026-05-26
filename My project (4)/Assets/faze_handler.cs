@@ -30,7 +30,6 @@ public class faze_handler : MonoBehaviour
 
     public TextMeshProUGUI nextFazeBorderText;
 
-    [Tooltip("Additional mirium amount text.")]
     public TextMeshProUGUI mirium_collector_player_text;
 
     [Header("Mirium Progress Bar")]
@@ -51,15 +50,18 @@ public class faze_handler : MonoBehaviour
         if (playerCollector == null || runFinished)
             return;
 
-        int mirium = playerCollector.collectedMirium;
+        int mirium =
+            playerCollector.collectedMirium;
 
         // ───────────────────────── FAZE CHECKS ─────────────────────────
 
-        if (currentFaze == 1 && mirium >= faze2Border)
+        if (currentFaze == 1 &&
+            mirium >= faze2Border)
         {
             ActivateFaze2();
         }
-        else if (currentFaze == 2 && mirium >= faze3Border)
+        else if (currentFaze == 2 &&
+                 mirium >= faze3Border)
         {
             ActivateFaze3();
         }
@@ -68,12 +70,22 @@ public class faze_handler : MonoBehaviour
 
         if (mirium >= backToSafe)
         {
-            FinishRun(mirium);
+            FinishRun();
         }
 
         UpdateUI(mirium);
 
         UpdateMiriumProgress(mirium);
+    }
+
+    // ───────────────────────── RESET RUN MIRIUM ─────────────────────────
+
+    void ResetRunMirium()
+    {
+        if (playerCollector != null)
+        {
+            playerCollector.collectedMirium = 0;
+        }
     }
 
     // ───────────────────────── FAZE ACTIVATION ─────────────────────────
@@ -85,9 +97,13 @@ public class faze_handler : MonoBehaviour
         Debug.Log("FAZE 2 ACTIVATED");
 
         if (faze2Decorations != null)
+        {
             faze2Decorations.SetActive(true);
+        }
 
         OnFazeChanged?.Invoke(currentFaze);
+
+        ResetRunMirium();
 
         TeleportToRandomLocation();
     }
@@ -99,45 +115,80 @@ public class faze_handler : MonoBehaviour
         Debug.Log("FAZE 3 ACTIVATED");
 
         if (faze3Decorations != null)
+        {
             faze3Decorations.SetActive(true);
+        }
 
         OnFazeChanged?.Invoke(currentFaze);
+
+        ResetRunMirium();
 
         TeleportToRandomLocation();
     }
 
     // ───────────────────────── RUN FINISH ─────────────────────────
 
-    void FinishRun(int collectedMirium)
+    void FinishRun()
     {
         runFinished = true;
 
         int[] percentages = { 25, 50, 75 };
 
-        int randomPercent =
-            percentages[UnityEngine.Random.Range(0, percentages.Length)];
+        int reward = 0;
 
-        int rewardedMirium =
-            Mathf.RoundToInt(
-                collectedMirium * (randomPercent / 100f)
-            );
+        // FAZE 2 REWARD
+        int faze2Percent =
+            percentages[
+                UnityEngine.Random.Range(
+                    0,
+                    percentages.Length
+                )
+            ];
 
-        // Add permanent mirium
-        GameManager.Instance.totalMirium += rewardedMirium;
+        reward += Mathf.RoundToInt(
+            faze2Border * (faze2Percent / 100f)
+        );
+
+        // FAZE 3 REWARD
+        int faze3Percent =
+            percentages[
+                UnityEngine.Random.Range(
+                    0,
+                    percentages.Length
+                )
+            ];
+
+        reward += Mathf.RoundToInt(
+            faze3Border * (faze3Percent / 100f)
+        );
+
+        // SAFE BORDER REWARD
+        int safePercent =
+            percentages[
+                UnityEngine.Random.Range(
+                    0,
+                    percentages.Length
+                )
+            ];
+
+        reward += Mathf.RoundToInt(
+            backToSafe * (safePercent / 100f)
+        );
+
+        // ADD PERMANENT MIRIUM
+        GameManager.Instance.mirium += reward;
 
         Debug.Log(
-            $"RUN FINISHED!\n" +
-            $"Collected Mirium: {collectedMirium}\n" +
-            $"Reward Percent: {randomPercent}%\n" +
-            $"Permanent Mirium Earned: {rewardedMirium}\n" +
-            $"TOTAL PERMANENT MIRIUM: {GameManager.Instance.totalMirium}"
+            "RUN FINISHED!\n" +
+            "Reward Earned: " + reward + "\n" +
+            "TOTAL MIRIUM: " +
+            GameManager.Instance.mirium
         );
 
         // OPTIONAL:
-        // Load menu scene
+        // Load menu
         // Open reward screen
-        // Freeze player
-        // Restart game loop
+        // Restart loop
     }
 
     // ───────────────────────── TELEPORT ─────────────────────────
@@ -175,7 +226,8 @@ public class faze_handler : MonoBehaviour
                 validDestinations.Count
             );
 
-        Transform target = validDestinations[randomIndex];
+        Transform target =
+            validDestinations[randomIndex];
 
         TeleportPlayer(target);
     }
@@ -189,7 +241,9 @@ public class faze_handler : MonoBehaviour
             player.GetComponent<Rigidbody>();
 
         if (cc != null)
+        {
             cc.enabled = false;
+        }
 
         player.position = target.position;
 
@@ -202,7 +256,6 @@ public class faze_handler : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
-
             rb.angularVelocity = Vector3.zero;
         }
 
@@ -219,27 +272,35 @@ public class faze_handler : MonoBehaviour
     void UpdateUI(int mirium)
     {
         if (fazeText != null)
+        {
             fazeText.text = $"{currentFaze}";
+        }
 
         if (playerMiriumText != null)
+        {
             playerMiriumText.text = $"{mirium}";
+        }
 
         if (mirium_collector_player_text != null)
+        {
             mirium_collector_player_text.text = $"{mirium}";
+        }
 
         if (nextFazeBorderText != null)
         {
             if (currentFaze == 1)
             {
-                nextFazeBorderText.text = $"{faze2Border}";
+                nextFazeBorderText.text =
+                    $"{faze2Border}";
             }
             else if (currentFaze == 2)
             {
-                nextFazeBorderText.text = $"{faze3Border}";
+                nextFazeBorderText.text =
+                    $"{faze3Border}";
             }
             else
             {
-                nextFazeBorderText.text = $"SAFE";
+                nextFazeBorderText.text = "SAFE";
             }
         }
     }
@@ -271,6 +332,7 @@ public class faze_handler : MonoBehaviour
 
         progress = Mathf.Clamp01(progress);
 
-        miriumFillImage.fillAmount = progress;
+        miriumFillImage.fillAmount =
+            progress;
     }
 }

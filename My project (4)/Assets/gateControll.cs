@@ -2,31 +2,39 @@
 
 public class gateControll : MonoBehaviour
 {
+    [Header("References")]
     public Animator gateAnimator;
 
-    public int currentState = 0; // local tracking (optional but useful)
+    [Tooltip("Invisible wall/collider blocking the gate")]
+    public GameObject gateBlocker;
 
     public void OpenGate()
     {
-        if (gateAnimator == null) return;
+        // Open animation
+        if (gateAnimator != null)
+        {
+            gateAnimator.SetInteger("State", 1);
+        }
 
-        // already open → do nothing
-        if (currentState == 1)
-            return;
-
-        currentState = 1;
-        gateAnimator.SetInteger("State", 1);
+        // Disable invisible wall
+        if (gateBlocker != null)
+        {
+            gateBlocker.SetActive(false);
+        }
     }
 
     public void CloseGate()
     {
-        if (gateAnimator == null) return;
+        // Close animation
+        if (gateAnimator != null)
+        {
+            gateAnimator.SetInteger("State", 0);
+        }
 
-        // already closed → do nothing
-        if (currentState == 0)
-            return;
-
-        currentState = 0;
-        gateAnimator.SetInteger("State", 0);
+        // Enable invisible wall
+        if (gateBlocker != null)
+        {
+            gateBlocker.SetActive(true);
+        }
     }
 }

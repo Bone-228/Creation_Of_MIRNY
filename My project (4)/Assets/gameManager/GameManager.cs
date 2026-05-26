@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,11 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Player Currency")]
-    public int mirium = 1000;
-
-    [Header("Permanent Currency")]
-    public int totalMirium = 0;
+    [Header("Permanent Player Currency")]
+    public int mirium = 0;
 
     [Header("Unlocked Modifiers")]
     public List<ModifierData> unlockedModifiers =
@@ -33,3 +31,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+

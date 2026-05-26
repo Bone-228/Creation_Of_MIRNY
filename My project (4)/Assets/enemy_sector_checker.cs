@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class enemy_sector_checker : MonoBehaviour
@@ -6,7 +7,7 @@ public class enemy_sector_checker : MonoBehaviour
     [Header("Gate Settings")]
     public gateControll[] gates;
 
-    [Header("All Gates In Entire Level (assign manually in Inspector)")]
+    [Header("All Gates In Entire Level")]
     public gateControll[] allGatesToClose;
 
     private List<enemy_health> enemies =
@@ -14,15 +15,20 @@ public class enemy_sector_checker : MonoBehaviour
 
     private bool gateOpened = false;
 
+    // Prevents gates from opening during resets
+    private bool sectorReady = true;
+
     public int aliveEnemies;
 
     private enemy_spawner[] spawners;
 
     // ───────────────────────── INIT ─────────────────────────
-    void Start()
+
+    private void Start()
     {
         allGatesToClose = gates;
     }
+
     void Awake()
     {
         spawners = GetComponentsInChildren<enemy_spawner>();
@@ -77,7 +83,7 @@ public class enemy_sector_checker : MonoBehaviour
         enemies.Remove(enemy);
     }
 
-    // ───────────────────────── ENEMY CLEANUP ─────────────────────────
+    // ───────────────────────── CLEANUP ─────────────────────────
 
     void CleanAndCountEnemies()
     {
@@ -91,14 +97,18 @@ public class enemy_sector_checker : MonoBehaviour
 
         aliveEnemies = enemies.Count;
 
-        if (aliveEnemies == 0 && !gateOpened)
+        // Gates can ONLY open when sector is ready
+        if (sectorReady &&
+            aliveEnemies == 0 &&
+            !gateOpened)
         {
             OpenRandomGate();
+
             gateOpened = true;
         }
     }
 
-    // ───────────────────────── OPEN GATE ─────────────────────────
+    // ───────────────────────── OPEN RANDOM CLOSED GATE ─────────────────────────
 
     void OpenRandomGate()
     {
@@ -110,14 +120,25 @@ public class enemy_sector_checker : MonoBehaviour
 
         foreach (gateControll gate in gates)
         {
-            if (gate != null)
+            if (gate != null && gate.gateAnimator != null)
             {
-                candidates.Add(gate);
+                int state =
+                    gate.gateAnimator.GetInteger("State");
+
+                // ONLY CLOSED GATES
+                if (state == 0)
+                {
+                    candidates.Add(gate);
+                }
             }
         }
 
+        // No closed gates available
         if (candidates.Count == 0)
+        {
+            Debug.Log("No closed gates available.");
             return;
+        }
 
         int randomIndex =
             Random.Range(0, candidates.Count);
@@ -126,17 +147,30 @@ public class enemy_sector_checker : MonoBehaviour
             candidates[randomIndex];
 
         selectedGate.OpenGate();
+
+        Debug.Log(
+            "Opened gate: " +
+            selectedGate.gameObject.name
+        );
     }
 
     // ───────────────────────── FAZE RESET ─────────────────────────
 
     void ResetSector(int newFaze)
     {
-        DeleteAllEnemies();
-        RespawnEnemies();
-        CloseAllGates();
+        // Prevent gates from opening during reset
+        sectorReady = false;
 
         gateOpened = false;
+
+        DeleteAllEnemies();
+
+        CloseAllGates();
+
+        RespawnEnemies();
+
+        // Sector works normally again
+        sectorReady = true;
     }
 
     // ───────────────────────── DELETE ENEMIES ─────────────────────────
@@ -152,8 +186,11 @@ public class enemy_sector_checker : MonoBehaviour
         }
 
         enemies.Clear();
+
         aliveEnemies = 0;
     }
+
+    // ───────────────────────── RESPAWN ─────────────────────────
 
     void RespawnEnemies()
     {
@@ -183,5 +220,8 @@ public class enemy_sector_checker : MonoBehaviour
                 gate.CloseGate();
             }
         }
+
+        Debug.Log("All gates closed.");
     }
 }
+
