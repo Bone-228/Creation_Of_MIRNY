@@ -20,13 +20,11 @@ public class tutorialGateManipulation : MonoBehaviour
 
         if (interaction.success)
         {
-            animator.SetBool("Open", true);
-            animator.SetBool("Closed", false);
+            animator.SetInteger("State", 1);
         }
         else
         {
-            animator.SetBool("Open", false);
-            animator.SetBool("Closed", true);
+            animator.SetInteger("State", 0);
         }
     }
 }

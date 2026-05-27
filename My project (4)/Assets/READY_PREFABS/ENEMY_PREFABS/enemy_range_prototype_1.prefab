@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16374
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1599,6 +1599,8 @@ MonoBehaviour:
   player: {fileID: 0}
   sightSpotDistance: 50
   miriumValue: 10
+  scrapsToGive: 20
+  healthToSteal: 10
   attackRange: 10
 --- !u!114 &385462305303471210
 MonoBehaviour:

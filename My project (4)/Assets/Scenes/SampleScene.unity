@@ -42183,9 +42183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mirium: 1000
-  totalMirium: 0
   unlockedModifiers: []
   equippedModifiers: []
+  ownedGuns: []
+  primaryGun: {fileID: 0}
+  secondaryGun: {fileID: 0}
 --- !u!4 &363546253
 Transform:
   m_ObjectHideFlags: 0
@@ -250156,6 +250158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c61a3ed8f13a644af9ed227badd7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: b8ad499050bddd04082c39041d92f523, type: 2}
   fireRate: 0.15
   damage: 25
   maxAmmo: 30
@@ -251006,6 +251009,7 @@ GameObject:
   - component: {fileID: 1096462880839488333}
   - component: {fileID: 7156304387420628394}
   - component: {fileID: 9183412082485559098}
+  - component: {fileID: 9183412082485559100}
   - component: {fileID: 9183412082485559099}
   m_Layer: 7
   m_Name: Player
@@ -251564,7 +251568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &4369976463478785670
 GameObject:
@@ -252261,6 +252265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4740923db8df56146927b74a6d033407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 7e489613a475e794e87f75d411b9ddbd, type: 2}
   fireRate: 0.1
   damage: 10
   maxAmmo: 7
@@ -257878,6 +257883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a4eec38e866b94583b100f3dc7bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 0}
   fireRate: 0
   damage: 10
   maxAmmo: 0
@@ -257959,7 +257965,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!1 &6733168562694967770
 GameObject:
@@ -258122,7 +258128,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &7156304387420628394
 MonoBehaviour:
@@ -263704,7 +263710,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &8224125555630029183
 MonoBehaviour:
@@ -264294,6 +264300,19 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9183412082485559100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375728741500494330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50414c16b7b3069438f65e127de6b9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrapCollector
+  playerScrapsCollected: 0
 --- !u!1 &9203570283009538930
 GameObject:
   m_ObjectHideFlags: 0

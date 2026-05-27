@@ -15,7 +15,7 @@ public class AiDeath : AiState
         agent.healthBar.gameObject.SetActive(false);
 
         GiveMirium(agent);
-
+        GiveScraps(agent);
         agent.StartCoroutine(DeleteAfterDelay(agent));
     }
 
@@ -40,7 +40,16 @@ public class AiDeath : AiState
             collector.AddMirium(agent.miriumValue);
         }
     }
-
+    private void GiveScraps(AiAgent agent)
+    {
+        if (agent.player == null) return;
+        ScrapCollector collector =
+            agent.player.GetComponent<ScrapCollector>();
+        if (collector != null)
+        {
+            collector.AddScraps(agent.scrapsToGive);
+        }
+    }   
     private IEnumerator DeleteAfterDelay(AiAgent agent)
     {
         yield return new WaitForSeconds(DeathDelay);

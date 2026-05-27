@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [Header("Permanent Player Currency")]
     public int mirium = 0;
 
+
+    //STORE MODIFIERS
     [Header("Unlocked Modifiers")]
     public List<ModifierData> unlockedModifiers =
         new List<ModifierData>();
@@ -16,6 +18,20 @@ public class GameManager : MonoBehaviour
     [Header("Equipped Modifiers")]
     public List<ModifierData> equippedModifiers =
         new List<ModifierData>();
+    //STORE GUNS
+
+    [Header("Permanent Scraps Currency")]
+    public int playerScraps = 0;
+
+    [Header("Owned Guns")]
+    public List<GunData> ownedGuns =
+    new List<GunData>();
+
+    [Header("Equipped Guns")]
+    public GunData primaryGun;
+
+    public GunData secondaryGun;
+
 
     void Awake()
     {

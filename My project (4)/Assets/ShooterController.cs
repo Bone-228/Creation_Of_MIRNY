@@ -13,17 +13,44 @@ public class ShooterController : MonoBehaviour
     public Weapon CurrentWeapon => currentWeapon;
 
     void Start()
+{
+    weapons =
+        GetComponentsInChildren<Weapon>(true).ToList();
+
+    if (weapons == null || weapons.Count == 0)
     {
-        weapons = GetComponentsInChildren<Weapon>(true).ToList();
-        if (weapons == null || weapons.Count == 0)
+        currentWeapon = null;
+        return;
+    }
+
+    // Disable all weapons first
+    weapons.ForEach(w => w.gameObject.SetActive(false));
+
+    List<Weapon> equippedWeapons =
+        new List<Weapon>();
+
+    foreach (Weapon weapon in weapons)
+    {
+        if (weapon.gunData ==
+            GameManager.Instance.primaryGun)
         {
-            currentWeapon = null;
-            return;
+            equippedWeapons.Add(weapon);
         }
 
-        weapons.ForEach(w => w.gameObject.SetActive(false));
-        ChangeWeapon(weapons.First());
+        if (weapon.gunData ==
+            GameManager.Instance.secondaryGun)
+        {
+            equippedWeapons.Add(weapon);
+        }
     }
+
+    weapons = equippedWeapons;
+
+    if (weapons.Count > 0)
+    {
+        ChangeWeapon(weapons[0]);
+    }
+}
 
     void Update()
     {

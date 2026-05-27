@@ -16,6 +16,8 @@ public class AiAgent : MonoBehaviour
 
     public int miriumValue = 10; // ✅ changed to int (better for currency)
 
+    public int scrapsToGive = 10;
+
     public int healthToSteal = 10;
 
     public float attackRange = 2.5f;
