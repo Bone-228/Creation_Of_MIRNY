@@ -1,109 +1,109 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class ShooterController : MonoBehaviour
 {
-    public event Action<Weapon, Weapon> WeaponChanged;
+    public event System.Action<Weapon, Weapon> WeaponChanged;
 
-    List<Weapon> weapons;
-    Weapon currentWeapon;
+    private List<Weapon> weapons;
+    private Weapon currentWeapon;
+
     public Weapon CurrentWeapon => currentWeapon;
 
     void Start()
-{
-    weapons =
-        GetComponentsInChildren<Weapon>(true).ToList();
-
-    if (weapons == null || weapons.Count == 0)
     {
-        currentWeapon = null;
-        return;
+        InitializeWeapons();
     }
 
-    // Disable all weapons first
-    weapons.ForEach(w => w.gameObject.SetActive(false));
-
-    List<Weapon> equippedWeapons =
-        new List<Weapon>();
-
-    foreach (Weapon weapon in weapons)
+    public void InitializeWeapons()
     {
-        if (weapon.gunData ==
-            GameManager.Instance.primaryGun)
+        weapons = GetComponentsInChildren<Weapon>(true).ToList();
+
+        // Disable all weapons first
+        foreach (var w in weapons)
+            w.gameObject.SetActive(false);
+
+        List<Weapon> equipped = new List<Weapon>();
+
+        foreach (var weapon in weapons)
         {
-            equippedWeapons.Add(weapon);
+            if (weapon == null) continue;
+
+            WeaponIdentifier id = weapon.GetComponent<WeaponIdentifier>();
+            if (id == null) continue;
+
+            // PRIMARY CHECK
+            if (GameManager.Instance.primaryGun != null &&
+                id.weaponID == GameManager.Instance.primaryGun.weaponID)
+            {
+                equipped.Add(weapon);
+            }
+
+            // SECONDARY CHECK
+            else if (GameManager.Instance.secondaryGun != null &&
+                     id.weaponID == GameManager.Instance.secondaryGun.weaponID)
+            {
+                equipped.Add(weapon);
+            }
         }
 
-        if (weapon.gunData ==
-            GameManager.Instance.secondaryGun)
+        weapons = equipped;
+
+        if (weapons.Count == 0)
         {
-            equippedWeapons.Add(weapon);
+            Debug.LogWarning("No equipped weapons found!");
+            return;
         }
-    }
 
-    weapons = equippedWeapons;
-
-    if (weapons.Count > 0)
-    {
         ChangeWeapon(weapons[0]);
     }
-}
+
+    public void RefreshWeapons()
+    {
+        InitializeWeapons();
+    }
 
     void Update()
     {
         if (currentWeapon == null)
             return;
 
-        // Only consider an explicit physical "press" for firing this frame.
-        // Using GetButtonDown / GetMouseButtonDown avoids accidental true values coming from other input mappings (e.g. crouch).
-        bool physicalFirePressed = Input.GetButton("Fire1") || Input.GetMouseButton(0);
+        bool fire =
+            Input.GetButton("Fire1") ||
+            Input.GetMouseButton(0);
 
-        // Only attempt to attack when both:
-        // - a physical fire press occurred this frame
-        // - the weapon's input method also indicates it's allowed to fire (preserves any weapon-specific checks)
-        if (physicalFirePressed && currentWeapon.ShootInputMethod != null && currentWeapon.ShootInputMethod("Fire1"))
+        if (fire &&
+            currentWeapon.ShootInputMethod != null &&
+            currentWeapon.ShootInputMethod("Fire1"))
         {
             currentWeapon.Attack();
         }
 
         if (Input.GetButtonDown("Reload"))
         {
-            Debug.Log("Jsem tu!");
-            currentWeapon?.Reload();
+            currentWeapon.Reload();
         }
 
-        // Weapon hotkeys - guard indices to avoid exceptions
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapons.Count > 0)
             ChangeWeapon(weapons[0]);
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && weapons.Count > 1)
             ChangeWeapon(weapons[1]);
-
-        if (Input.GetKeyDown(KeyCode.Alpha3) && weapons.Count > 2)
-            ChangeWeapon(weapons[2]);
-
-        if (Input.GetKeyDown(KeyCode.G) && weapons.Count > 3)
-            ChangeWeapon(weapons[3]);
     }
 
     private void ChangeWeapon(Weapon newWeapon)
     {
-        if (newWeapon == null)
-            return;
+        if (newWeapon == null) return;
 
-        if (currentWeapon)
-        {
-            if (currentWeapon.IsReloading)
-                currentWeapon.Reload();
+        if (currentWeapon != null)
             currentWeapon.gameObject.SetActive(false);
-        }
 
-        WeaponChanged?.Invoke(currentWeapon, newWeapon);
-
+        Weapon oldWeapon = currentWeapon;
         currentWeapon = newWeapon;
+
         currentWeapon.gameObject.SetActive(true);
+
+        WeaponChanged?.Invoke(oldWeapon, currentWeapon);
     }
 }

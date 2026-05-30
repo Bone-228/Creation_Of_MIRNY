@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
     public event Action<float> ReloadProgressChanged;
     [Header("GunData for weapon")]
     public GunData gunData;
+    [Header("Base weapon characteristics")]
     public int Id { get; set; }
     [SerializeField]
     protected float fireRate = 0.1f;

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RifleData
   m_EditorClassIdentifier: Assembly-CSharp::GunData
   gunName: Rifle
-  gunPrice: 0
   gunIcon: {fileID: 0}
+  gunPrice: 0
+  weaponID: rifle

@@ -2,81 +2,55 @@
 
 public class GunShopManager : MonoBehaviour
 {
-    // ───────────────────────── BUY GUN ─────────────────────────
+    // ───────────────────────── BUY ─────────────────────────
 
     public void BuyGun(GunData gun)
     {
-        if (gun == null)
-            return;
+        if (gun == null) return;
 
-        // Already owned
         if (GameManager.Instance.ownedGuns.Contains(gun))
-        {
-            Debug.Log("Gun already owned.");
             return;
-        }
 
-        // Not enough money
         if (GameManager.Instance.playerScraps < gun.gunPrice)
-        {
-            Debug.Log("Not enough currency.");
             return;
-        }
 
         GameManager.Instance.playerScraps -= gun.gunPrice;
-
         GameManager.Instance.ownedGuns.Add(gun);
 
-        Debug.Log("Bought gun: " + gun.gunName);
+        Debug.Log("Bought: " + gun.gunName);
     }
 
-    // ───────────────────────── EQUIP PRIMARY ─────────────────────────
+    // ───────────────────────── EQUIP (2 SLOT SYSTEM) ─────────────────────────
 
-    public void EquipPrimary(GunData gun)
+    public void EquipGun(GunData gun)
     {
-        if (gun == null)
-            return;
+        if (gun == null) return;
 
-        // Must own gun
         if (!GameManager.Instance.ownedGuns.Contains(gun))
-        {
-            Debug.Log("Gun not owned.");
             return;
+
+        if (GameManager.Instance.selectedEquipSlot == GameManager.EquipSlot.Primary)
+        {
+            GameManager.Instance.primaryGun = gun;
+            Debug.Log("Equipped PRIMARY: " + gun.gunName);
+        }
+        else
+        {
+            GameManager.Instance.secondaryGun = gun;
+            Debug.Log("Equipped SECONDARY: " + gun.gunName);
         }
 
-        // Prevent duplicate equip
-        if (GameManager.Instance.secondaryGun == gun)
-        {
-            Debug.Log("Already equipped in secondary slot.");
-            return;
-        }
-
-        GameManager.Instance.primaryGun = gun;
-
-        Debug.Log("Primary equipped: " + gun.gunName);
+        RefreshShooter();
     }
 
-    // ───────────────────────── EQUIP SECONDARY ─────────────────────────
-
-    public void EquipSecondary(GunData gun)
+    private void RefreshShooter()
     {
-        if (gun == null)
-            return;
+        ShooterController shooter =
+            FindFirstObjectByType<ShooterController>();
 
-        if (!GameManager.Instance.ownedGuns.Contains(gun))
+        if (shooter != null)
         {
-            Debug.Log("Gun not owned.");
-            return;
+            shooter.RefreshWeapons();
         }
-
-        if (GameManager.Instance.primaryGun == gun)
-        {
-            Debug.Log("Already equipped in primary slot.");
-            return;
-        }
-
-        GameManager.Instance.secondaryGun = gun;
-
-        Debug.Log("Secondary equipped: " + gun.gunName);
     }
 }
