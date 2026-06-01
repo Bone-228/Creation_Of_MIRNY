@@ -250,7 +250,7 @@ public class RangedWeapon : Weapon
         Destroy(trail.gameObject, trail.time);
     }
 
-    private void ShowHitMarker()
+    public void ShowHitMarker()
     {
         if (hitMarkerObject == null)
             return;
