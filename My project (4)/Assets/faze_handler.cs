@@ -20,6 +20,9 @@ public class faze_handler : MonoBehaviour
 
     public Transform player;
 
+    [Header("After Battle")]
+    public AfterBattleUI afterBattleUI;
+
     [Header("Teleport Destinations")]
     public Transform[] randomDestinations;
 
@@ -84,6 +87,9 @@ public class faze_handler : MonoBehaviour
     {
         if (playerCollector != null)
         {
+            GameManager.Instance.playerRunMirium +=
+     playerCollector.collectedMirium;
+
             playerCollector.collectedMirium = 0;
         }
     }
@@ -136,7 +142,6 @@ public class faze_handler : MonoBehaviour
 
         int reward = 0;
 
-        // FAZE 2 REWARD
         int faze2Percent =
             percentages[
                 UnityEngine.Random.Range(
@@ -149,7 +154,6 @@ public class faze_handler : MonoBehaviour
             faze2Border * (faze2Percent / 100f)
         );
 
-        // FAZE 3 REWARD
         int faze3Percent =
             percentages[
                 UnityEngine.Random.Range(
@@ -162,7 +166,6 @@ public class faze_handler : MonoBehaviour
             faze3Border * (faze3Percent / 100f)
         );
 
-        // SAFE BORDER REWARD
         int safePercent =
             percentages[
                 UnityEngine.Random.Range(
@@ -175,20 +178,26 @@ public class faze_handler : MonoBehaviour
             backToSafe * (safePercent / 100f)
         );
 
-        // ADD PERMANENT MIRIUM
         GameManager.Instance.mirium += reward;
 
-        Debug.Log(
-            "RUN FINISHED!\n" +
-            "Reward Earned: " + reward + "\n" +
-            "TOTAL MIRIUM: " +
-            GameManager.Instance.mirium
-        );
+        RunStatistics.miriumCollected =
+            GameManager.Instance.playerRunMirium;
 
-        // OPTIONAL:
-        // Load menu
-        // Open reward screen
-        // Restart loop
+        RunStatistics.phasesReached =
+            currentFaze;
+
+        RunStatistics.playerDied = false;
+
+        RunStatistics.rewardEarned = reward;
+
+        Time.timeScale = 0f;
+
+        if (afterBattleUI != null)
+        {
+            afterBattleUI.Open();
+        }
+
+        Debug.Log("RUN FINISHED");
     }
 
     // ───────────────────────── TELEPORT ─────────────────────────

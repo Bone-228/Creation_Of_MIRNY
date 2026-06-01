@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public int playerScraps = 0;
     public int mirium = 0;
 
+    [Header("Current Run")]
+    public int playerRunMirium = 0;
+
     // ───────────────────── GUNS ─────────────────────
 
     [Header("Owned Guns")]
