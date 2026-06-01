@@ -18473,8 +18473,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23653,8 +23653,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -30843,7 +30843,6 @@ GameObject:
   - component: {fileID: 258817161}
   - component: {fileID: 258817160}
   - component: {fileID: 258817159}
-  - component: {fileID: 258817162}
   m_Layer: 6
   m_Name: buy_button
   m_TagString: Untagged
@@ -30928,7 +30927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2901961, g: 0.56078434, b: 0.24313726, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -30953,21 +30952,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258817157}
   m_CullTransparentMesh: 1
---- !u!114 &258817162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258817157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1001 &259274881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46275,8 +46259,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Primary Slot
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -47226,8 +47210,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -58366,8 +58350,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: gun_price
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -109840,8 +109824,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: gun_price
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -144848,8 +144832,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -150342,7 +150326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306532962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -175325,7 +175309,6 @@ GameObject:
   - component: {fileID: 1513095071}
   - component: {fileID: 1513095070}
   - component: {fileID: 1513095073}
-  - component: {fileID: 1513095074}
   m_Layer: 6
   m_Name: secondary_slot_button
   m_TagString: Untagged
@@ -175422,7 +175405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2901961, g: 0.56078434, b: 0.24313726, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -175459,21 +175442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fc6a1805c5d2e46b9038e072d71fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquipSlotUI
---- !u!114 &1513095074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513095068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1513561197
 GameObject:
   m_ObjectHideFlags: 0
@@ -177265,7 +177233,6 @@ GameObject:
   - component: {fileID: 1531900482}
   - component: {fileID: 1531900481}
   - component: {fileID: 1531900480}
-  - component: {fileID: 1531900483}
   m_Layer: 6
   m_Name: buy_button
   m_TagString: Untagged
@@ -177350,7 +177317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2901961, g: 0.56078434, b: 0.24313726, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -177375,21 +177342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531900478}
   m_CullTransparentMesh: 1
---- !u!114 &1531900483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531900478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1532099839
 GameObject:
   m_ObjectHideFlags: 0
@@ -201162,8 +201114,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -235713,7 +235665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2025114697
 Transform:
   m_ObjectHideFlags: 0
@@ -245520,8 +245472,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
-  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -247945,7 +247897,6 @@ GameObject:
   - component: {fileID: 2121844640}
   - component: {fileID: 2121844639}
   - component: {fileID: 2121844642}
-  - component: {fileID: 2121844643}
   m_Layer: 6
   m_Name: prinmary_slot_button
   m_TagString: Untagged
@@ -248042,7 +247993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2901961, g: 0.56078434, b: 0.24313726, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -248079,21 +248030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fc6a1805c5d2e46b9038e072d71fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquipSlotUI
---- !u!114 &2121844643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121844637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1001 &2122461682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252129,7 +252065,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 152.69379
+      value: 149.28253
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -252137,23 +252073,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.2415273
+      value: -3.9357703
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6985409
+      value: 0.93522525
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25290683
+      value: 0.33859816
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.62940544
+      value: 0.09728579
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.22787628
+      value: -0.035222303
       objectReference: {fileID: 0}
     - target: {fileID: 504281548789763513, guid: b18a17d296246364d8e7f1035f72e6c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -252446,6 +252382,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &1135608079913148644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375728741500494330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa39ddf7cdc41947bedfd080ad17571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::weapon_animation_controller
+  playerAnimator: {fileID: 4829068631136536545}
+  aimLayerName: weapons_rifle
+  aimLayerIndex: 2
+  aimWeight: 1
+  transitionSpeed: 8
+  detectAimingScript: {fileID: 9062320939579590131}
+  aimParamName: isAiming
+  specificId: 2
+  weaponTypeParam: weaponType
+  weaponEquippedParam: weaponEquiped
+  weaponLayerName: Weapon
+  weaponLayerIndex: 2
 --- !u!23 &1175833408746779281
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -252625,7 +252585,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 152.7001
+      value: 149.31665
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -252633,23 +252593,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6863695
+      value: -3.9427392
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.68647784
+      value: 0.956322
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2295252
+      value: 0.18914253
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6543681
+      value: 0.21864013
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.21878926
+      value: -0.043242913
       objectReference: {fileID: 0}
     - target: {fileID: 419718919504647462, guid: c4540a8a9be8d1e41a35cc0db183acb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -253121,6 +253081,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &2190217863081600593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375728741500494330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa39ddf7cdc41947bedfd080ad17571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::weapon_animation_controller
+  playerAnimator: {fileID: 4829068631136536545}
+  aimLayerName: weapons_pistol
+  aimLayerIndex: 1
+  aimWeight: 1
+  transitionSpeed: 8
+  detectAimingScript: {fileID: 9062320939579590131}
+  aimParamName: isAiming
+  specificId: 1
+  weaponTypeParam: weaponType
+  weaponEquippedParam: weaponEquiped
+  weaponLayerName: Weapon
+  weaponLayerIndex: 2
 --- !u!1 &2205334696846868037
 GameObject:
   m_ObjectHideFlags: 0
@@ -253810,6 +253794,8 @@ GameObject:
   - component: {fileID: 9183412082485559096}
   - component: {fileID: 2230439251114469381}
   - component: {fileID: 8496964339637224100}
+  - component: {fileID: 2190217863081600593}
+  - component: {fileID: 1135608079913148644}
   - component: {fileID: 9183412082485559097}
   - component: {fileID: 8453426560619593580}
   - component: {fileID: 4706379808647179036}
@@ -254793,7 +254779,7 @@ Transform:
   m_GameObject: {fileID: 3375728741500494330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.71, y: 1.382, z: -1.93}
+  m_LocalPosition: {x: 149.9, y: 1.382, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -261211,7 +261197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 152.7001
+      value: 149.31665
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -261219,23 +261205,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6863695
+      value: -3.9427385
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.68647784
+      value: 0.95632195
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22952521
+      value: 0.18914255
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.65436816
+      value: 0.21864016
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.21878926
+      value: -0.04324292
       objectReference: {fileID: 0}
     - target: {fileID: 7089046620150408317, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
