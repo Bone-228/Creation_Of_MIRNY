@@ -9,6 +9,8 @@ public class UISwitcher : MonoBehaviour
     public GameObject uiToDisable;
     public GameObject uiCursor;
 
+    public BattleAudioManager battleAudioManager;
+
     void Update()
     {
         // Press ESC to switch UI
@@ -21,6 +23,8 @@ public class UISwitcher : MonoBehaviour
     // Call this from your Button
     public void SwitchUI()
     {
+        battleAudioManager.PlayButtonClick();
+
         if (uiToEnable != null)
             uiToEnable.SetActive(true);
 
