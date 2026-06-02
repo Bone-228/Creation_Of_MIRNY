@@ -21,7 +21,7 @@ public class faze_handler : MonoBehaviour
     public Transform player;
 
     [Header("After Battle")]
-    public AfterBattleUI afterBattleUI;
+    public GameObject afterBattleUI;
 
     [Header("Teleport Destinations")]
     public Transform[] randomDestinations;
@@ -138,6 +138,10 @@ public class faze_handler : MonoBehaviour
     {
         runFinished = true;
 
+
+        afterBattleUI.SetActive(true);
+
+
         int[] percentages = { 25, 50, 75 };
 
         int reward = 0;
@@ -192,10 +196,7 @@ public class faze_handler : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        if (afterBattleUI != null)
-        {
-            afterBattleUI.Open();
-        }
+       
 
         Debug.Log("RUN FINISHED");
     }
