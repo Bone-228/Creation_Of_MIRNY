@@ -72,7 +72,7 @@ public class AfterBattleUI : MonoBehaviour
             lorePanel.SetActive(true);
         }
 
-        playerMovement.enabled = false;
+        playerMovement.enabled = false; 
         playerCamera.enabled = false;
 
         Cursor.lockState = CursorLockMode.None;

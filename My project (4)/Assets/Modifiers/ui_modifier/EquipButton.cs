@@ -5,8 +5,11 @@ public class EquipButton : MonoBehaviour
     public ModifierUI modifierUI;
     public ModifierManager modifierManager;
 
+    public BattleAudioManager battleAudioManager;
+
     public void EquipSelected()
     {
+        battleAudioManager.PlayButtonClick();
         ModifierData mod = modifierUI.selectedModifier;
 
         if (mod == null)
