@@ -7,6 +7,8 @@ public class Portal : MonoBehaviour
     public Transform[] destination;
     public int random;
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (destination == null || destination.Length == 0) return;

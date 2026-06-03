@@ -6404,6 +6404,9 @@ MonoBehaviour:
   sfxSource: {fileID: 2049094370}
   safe_zone_music: {fileID: 8300000, guid: 4bc8a0457f1d5b645afa2f3299368f39, type: 3}
   button_click: {fileID: 8300000, guid: 09830584f7427004aa6b4e8050ed8a3d, type: 3}
+  faze1_music: {fileID: 8300000, guid: 2ba901bd67e09834c87078e4572ba9fd, type: 3}
+  faze2_music: {fileID: 8300000, guid: 006c1723056743849b52b78a0831fb0e, type: 3}
+  faze3_music: {fileID: 8300000, guid: 068cab02d92105a41a61e9422ef042ae, type: 3}
 --- !u!1001 &51371054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76853,7 +76856,7 @@ RectTransform:
   m_Father: {fileID: 1225387271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -128478,9 +128481,9 @@ RectTransform:
   m_Father: {fileID: 1620081065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1097159023
 MonoBehaviour:
@@ -131276,7 +131279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1121708833
 Transform:
   m_ObjectHideFlags: 0
@@ -133014,6 +133017,7 @@ MonoBehaviour:
   miriumFillImage: {fileID: 1413474536}
   faze2Decorations: {fileID: 1303030281}
   faze3Decorations: {fileID: 0}
+  battleAudioManager: {fileID: 51155744}
 --- !u!1001 &1139411155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258787,6 +258791,9 @@ MonoBehaviour:
   fireRate: 0.15
   damage: 25
   maxAmmo: 30
+  battleAudioManager: {fileID: 51155744}
+  shootSound: {fileID: 8300000, guid: c6dbb105f3040dd47bc1a1a4b22ac371, type: 3}
+  reloadSound: {fileID: 8300000, guid: 36c2eeaaec40b914ab27d2a877de6ef7, type: 3}
   bulletRange: 100
   firePoint: {fileID: 5263790702710297503}
   reloadTime: 2
@@ -260896,6 +260903,9 @@ MonoBehaviour:
   fireRate: 0.1
   damage: 10
   maxAmmo: 7
+  battleAudioManager: {fileID: 51155744}
+  shootSound: {fileID: 8300000, guid: b76adfc0558e6484db425a5f7ad5753e, type: 3}
+  reloadSound: {fileID: 8300000, guid: 36c2eeaaec40b914ab27d2a877de6ef7, type: 3}
   bulletRange: 100
   firePoint: {fileID: 294393744308633207}
   reloadTime: 1.3
@@ -266527,6 +266537,9 @@ MonoBehaviour:
   fireRate: 0
   damage: 10
   maxAmmo: 0
+  battleAudioManager: {fileID: 0}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
   bulletRange: 100
   firePoint: {fileID: 0}
   reloadTime: 0

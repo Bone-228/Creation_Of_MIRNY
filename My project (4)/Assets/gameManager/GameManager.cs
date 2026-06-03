@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     [Header("Current Run")]
     public int playerRunMirium = 0;
 
-    // ───────────────────── GUNS ─────────────────────
-
     [Header("Owned Guns")]
     public List<GunData> ownedGuns = new List<GunData>();
 
@@ -21,15 +19,11 @@ public class GameManager : MonoBehaviour
     public GunData primaryGun;
     public GunData secondaryGun;
 
-    // ───────────────────── MODIFIERS ─────────────────────
-
     [Header("Unlocked Modifiers")]
     public List<ModifierData> unlockedModifiers = new List<ModifierData>();
 
     [Header("Equipped Modifiers")]
     public List<ModifierData> equippedModifiers = new List<ModifierData>();
-
-    // ───────────────────── EQUIP SLOT SYSTEM ─────────────────────
 
     public enum EquipSlot
     {
@@ -38,9 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     public EquipSlot selectedEquipSlot;
-
     // ───────────────────── SINGLETON ─────────────────────
-
     void Awake()
     {
         if (Instance == null)
@@ -53,8 +45,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public bool OwnsGun(GunData gun)
+   public bool OwnsGun(GunData gun)
     {
         return ownedGuns.Contains(gun);
     }

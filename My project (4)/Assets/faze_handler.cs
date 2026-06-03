@@ -48,6 +48,8 @@ public class faze_handler : MonoBehaviour
 
     private bool runFinished = false;
 
+    public BattleAudioManager battleAudioManager;
+
     void Update()
     {
         if (playerCollector == null || runFinished)
@@ -98,6 +100,8 @@ public class faze_handler : MonoBehaviour
 
     void ActivateFaze2()
     {
+        battleAudioManager.PlayFazeTwo();
+
         currentFaze = 2;
 
         Debug.Log("FAZE 2 ACTIVATED");
@@ -112,10 +116,13 @@ public class faze_handler : MonoBehaviour
         ResetRunMirium();
 
         TeleportToRandomLocation();
+
     }
 
     void ActivateFaze3()
     {
+        battleAudioManager.PlayFazeThree();
+
         currentFaze = 3;
 
         Debug.Log("FAZE 3 ACTIVATED");
@@ -137,15 +144,9 @@ public class faze_handler : MonoBehaviour
     void FinishRun()
     {
         runFinished = true;
-
-
         afterBattleUI.SetActive(true);
-
-
         int[] percentages = { 25, 50, 75 };
-
         int reward = 0;
-
         int faze2Percent =
             percentages[
                 UnityEngine.Random.Range(
@@ -153,52 +154,20 @@ public class faze_handler : MonoBehaviour
                     percentages.Length
                 )
             ];
+        reward += Mathf.RoundToInt(faze2Border * (faze2Percent / 100f));
+        int faze3Percent = percentages[UnityEngine.Random.Range(0,percentages.Length)];
+        reward += Mathf.RoundToInt(faze3Border * (faze3Percent / 100f));
 
-        reward += Mathf.RoundToInt(
-            faze2Border * (faze2Percent / 100f)
-        );
+        int safePercent = percentages[UnityEngine.Random.Range(0,percentages.Length)];
 
-        int faze3Percent =
-            percentages[
-                UnityEngine.Random.Range(
-                    0,
-                    percentages.Length
-                )
-            ];
-
-        reward += Mathf.RoundToInt(
-            faze3Border * (faze3Percent / 100f)
-        );
-
-        int safePercent =
-            percentages[
-                UnityEngine.Random.Range(
-                    0,
-                    percentages.Length
-                )
-            ];
-
-        reward += Mathf.RoundToInt(
-            backToSafe * (safePercent / 100f)
-        );
+        reward += Mathf.RoundToInt(backToSafe * (safePercent / 100f));
 
         GameManager.Instance.mirium += reward;
-
-        RunStatistics.miriumCollected =
-            GameManager.Instance.playerRunMirium;
-
-        RunStatistics.phasesReached =
-            currentFaze;
-
+        RunStatistics.miriumCollected = GameManager.Instance.playerRunMirium;
+        RunStatistics.phasesReached = currentFaze;
         RunStatistics.playerDied = false;
-
         RunStatistics.rewardEarned = reward;
-
         Time.timeScale = 0f;
-
-       
-
-        Debug.Log("RUN FINISHED");
     }
 
     // ───────────────────────── TELEPORT ─────────────────────────
@@ -209,10 +178,7 @@ public class faze_handler : MonoBehaviour
             randomDestinations == null ||
             randomDestinations.Length == 0)
             return;
-
-        List<Transform> validDestinations =
-            new List<Transform>();
-
+        List<Transform> validDestinations = new List<Transform>();
         foreach (Transform destination in randomDestinations)
         {
             if (destination != null)
@@ -220,7 +186,6 @@ public class faze_handler : MonoBehaviour
                 validDestinations.Add(destination);
             }
         }
-
         if (validDestinations.Count == 0)
         {
             Debug.LogWarning(
@@ -229,16 +194,8 @@ public class faze_handler : MonoBehaviour
 
             return;
         }
-
-        int randomIndex =
-            UnityEngine.Random.Range(
-                0,
-                validDestinations.Count
-            );
-
-        Transform target =
-            validDestinations[randomIndex];
-
+        int randomIndex = UnityEngine.Random.Range(0,validDestinations.Count);
+        Transform target = validDestinations[randomIndex];
         TeleportPlayer(target);
     }
 

@@ -14,6 +14,12 @@ public class RangedWeapon : Weapon
 
     public override bool IsReloading => remainingReloadTime > 0;
 
+    [Header("Audios")]
+    public BattleAudioManager battleAudioManager;
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
+
+
     [SerializeField]
     protected float bulletRange = 100f;
 
@@ -71,6 +77,7 @@ public class RangedWeapon : Weapon
 
     public override void Reload()
     {
+        battleAudioManager.PlaySelectedSound(reloadSound);
         remainingReloadTime = reloadTime;
         RaiseReloadProgressChanged(1);
         Debug.Log($"Reloading {remainingReloadTime}");
@@ -104,6 +111,8 @@ public class RangedWeapon : Weapon
             return;
 
         ChangeAmmo(currentAmmo - 1);
+
+        battleAudioManager.PlaySelectedSound(shootSound);
 
         DoShoot();
 
