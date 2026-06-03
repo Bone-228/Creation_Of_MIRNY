@@ -19,6 +19,9 @@ public class AfterBattleUI : MonoBehaviour
     public TextMeshProUGUI rewardText;
 
     public GameObject battleui;
+
+
+    public playerHealthManager playerHealthManager;
     [Header("PLAYER")]
     public PlayerMovement playerMovement;
     public ThirdPersonCam playerCamera;
@@ -31,6 +34,7 @@ public class AfterBattleUI : MonoBehaviour
         battleui.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
+        Open();
     }
 
     public void Open()

@@ -50,6 +50,9 @@ public class faze_handler : MonoBehaviour
 
     public BattleAudioManager battleAudioManager;
 
+    [Header("Player Health")]
+    public playerHealthManager playerHealthManager;
+
     void Update()
     {
         if (playerCollector == null || runFinished)
@@ -81,6 +84,8 @@ public class faze_handler : MonoBehaviour
         UpdateUI(mirium);
 
         UpdateMiriumProgress(mirium);
+
+        ControllPlayerHealth();
     }
 
     // ───────────────────────── RESET RUN MIRIUM ─────────────────────────
@@ -100,6 +105,7 @@ public class faze_handler : MonoBehaviour
 
     void ActivateFaze2()
     {
+        battleAudioManager.PlayPhaseChangeSound();
         battleAudioManager.PlayFazeTwo();
 
         currentFaze = 2;
@@ -121,6 +127,7 @@ public class faze_handler : MonoBehaviour
 
     void ActivateFaze3()
     {
+        battleAudioManager.PlayPhaseChangeSound();
         battleAudioManager.PlayFazeThree();
 
         currentFaze = 3;
@@ -301,5 +308,16 @@ public class faze_handler : MonoBehaviour
 
         miriumFillImage.fillAmount =
             progress;
+    }
+
+    public void ControllPlayerHealth() 
+    {
+        if (playerHealthManager.currentHealth <= 0) 
+        { 
+
+            FinishRun();
+            RunStatistics.playerDied = true;
+            RunStatistics.phasesReached = currentFaze;
+        }
     }
 }

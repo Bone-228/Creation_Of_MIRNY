@@ -13,7 +13,10 @@ public class BattleAudioManager : MonoBehaviour
     public AudioClip faze1_music;
     public AudioClip faze2_music;
     public AudioClip faze3_music;
-
+    public AudioClip walking_player;
+    public AudioClip running_player;
+    public AudioClip phase_change_sound;
+    public AudioClip player_dead_sound;
 
     void Start()
     {
@@ -56,6 +59,57 @@ public class BattleAudioManager : MonoBehaviour
     public void PlaySelectedSound(AudioClip selectedClip) 
     { 
         sfxSource.clip = selectedClip;
+        sfxSource.Play();
+    }
+
+    public void PlayWalkingSound()
+    {
+        if (sfxSource.clip == walking_player && sfxSource.isPlaying)
+            return;
+
+        sfxSource.clip = walking_player;
+        sfxSource.loop = true;
+        sfxSource.Play();
+    }
+
+    public void StopWalkingSound()
+    {
+        if (sfxSource.clip == walking_player)
+        {
+            sfxSource.Stop();
+            sfxSource.loop = false;
+        }
+    }
+
+    public void PlayRunningSound()
+    {
+        if (sfxSource.clip == running_player && sfxSource.isPlaying)
+            return;
+
+        sfxSource.clip = running_player;
+        sfxSource.loop = true;
+        sfxSource.Play();
+    }
+
+    public void StopRunningSound()
+    {
+        if (sfxSource.clip == running_player)
+        {
+            sfxSource.Stop();
+            sfxSource.loop = false;
+        }
+    }
+
+    public void PlayPhaseChangeSound()
+    {
+        sfxSource.clip = phase_change_sound;
+        sfxSource.Play();
+    }
+
+
+    public void PlayPlayerDeadSound() 
+    { 
+        sfxSource.clip = player_dead_sound;
         sfxSource.Play();
     }
 }

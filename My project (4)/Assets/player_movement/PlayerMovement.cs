@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("SFX")]
+    public BattleAudioManager battleAudioManager;
+
+
     [Header("Aiming")]
     public bool isAiming { get; private set; }
 
@@ -107,6 +111,19 @@ public class PlayerMovement : MonoBehaviour
         RecalculateMovement();
     }
 
+    // ───────────────────────── DETECTING MOVEMENT ─────────────────────────
+
+
+    private bool IsMoving()
+    {
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        return flatVel.magnitude > 0.1f && grounded;
+    }
+
+    private bool IsSprinting()
+    {
+        return grounded && Input.GetKey(KeyCode.LeftShift);
+    }
     // ───────────────────────── MODIFIER RECALCULATION ─────────────────────────
 
     public void RecalculateMovement()
@@ -158,6 +175,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (battleAudioManager != null)
+        {
+            if (IsMoving())
+            {
+                if (IsSprinting())
+                {
+                    battleAudioManager.StopWalkingSound();
+                    battleAudioManager.PlayRunningSound();
+                }
+                else
+                {
+                    battleAudioManager.StopRunningSound();
+                    battleAudioManager.PlayWalkingSound();
+                }
+            }
+            else
+            {
+                battleAudioManager.StopWalkingSound();
+                battleAudioManager.StopRunningSound();
+            }
+        }
+
+
         if (isTeleporting) return;
 
         Vector3 origin = transform.position + Vector3.up * 0.1f;
@@ -192,6 +232,7 @@ public class PlayerMovement : MonoBehaviour
             target,
             Time.deltaTime / slopeSmoothness
         );
+
     }
 
     private void FixedUpdate()
@@ -230,6 +271,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
         }
+
     }
 
     // ───────────────────────── STATE HANDLER ─────────────────────────
@@ -241,18 +283,23 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.sprint;
 
             normalMoveSpeed = sprintSpeed;
+
         }
         else if (grounded && Input.GetKey(KeyCode.LeftAlt))
         {
             state = MovementState.slowWalk;
 
             normalMoveSpeed = slowWalkSpeed;
+
+
         }
         else if (grounded)
         {
             state = MovementState.walk;
 
             normalMoveSpeed = walkSpeed;
+
+
         }
         else if (wallrunning)
         {
@@ -272,6 +319,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void movePlayer()
     {
+
         movementDirection =
             orientation.forward * verticalInput +
             orientation.right * horizontalInput;

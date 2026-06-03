@@ -6407,6 +6407,10 @@ MonoBehaviour:
   faze1_music: {fileID: 8300000, guid: 2ba901bd67e09834c87078e4572ba9fd, type: 3}
   faze2_music: {fileID: 8300000, guid: 006c1723056743849b52b78a0831fb0e, type: 3}
   faze3_music: {fileID: 8300000, guid: 068cab02d92105a41a61e9422ef042ae, type: 3}
+  walking_player: {fileID: 8300000, guid: e18f2a267dc1b134f80498d90845f98e, type: 3}
+  running_player: {fileID: 8300000, guid: b7bdd9c19e07df04596b58f15e00e919, type: 3}
+  phase_change_sound: {fileID: 8300000, guid: ac08f9bbc727cd04399f0f6fc0319c35, type: 3}
+  player_dead_sound: {fileID: 8300000, guid: e1e0579a852dcbb4facd4b321ce4332a, type: 3}
 --- !u!1001 &51371054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89322,6 +89326,7 @@ MonoBehaviour:
   phasesText: {fileID: 656003551}
   rewardText: {fileID: 1770099960}
   battleui: {fileID: 1380867780}
+  playerHealthManager: {fileID: 9183412082485559098}
   playerMovement: {fileID: 4516561156935298696}
   playerCamera: {fileID: 963194230}
 --- !u!1001 &747369661
@@ -133018,6 +133023,7 @@ MonoBehaviour:
   faze2Decorations: {fileID: 1303030281}
   faze3Decorations: {fileID: 0}
   battleAudioManager: {fileID: 51155744}
+  playerHealthManager: {fileID: 9183412082485559098}
 --- !u!1001 &1139411155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259082,7 +259088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2499543753732909927
 GameObject:
   m_ObjectHideFlags: 0
@@ -259735,7 +259741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3599608245963758888
 Transform:
   m_ObjectHideFlags: 0
@@ -260329,6 +260335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdf060bff0c7184ba8cfa5c58d229a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleAudioManager: {fileID: 51155744}
   baseSlowWalkSpeed: 5
   baseWalkSpeed: 7
   baseSprintSpeed: 10
@@ -272943,6 +272950,7 @@ MonoBehaviour:
   baseMaxHealth: 100
   maxHealth: 100
   currentHealth: 0
+  battleAudioManager: {fileID: 51155744}
 --- !u!136 &9183412082485559099
 CapsuleCollider:
   m_ObjectHideFlags: 0

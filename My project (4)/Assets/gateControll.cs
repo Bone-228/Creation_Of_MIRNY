@@ -8,8 +8,10 @@ public class gateControll : MonoBehaviour
     [Tooltip("Invisible wall/collider blocking the gate")]
     public GameObject gateBlocker;
 
+    public GateAudio gateAudio;
     public void OpenGate()
     {
+        gateAudio.PlayOpenSound();
         // Open animation
         if (gateAnimator != null)
         {

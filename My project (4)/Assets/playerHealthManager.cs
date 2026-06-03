@@ -11,11 +11,17 @@ public class playerHealthManager : MonoBehaviour
 
     private bool isDead = false;
 
+    public BattleAudioManager battleAudioManager;
     void Start()
     {
         RecalculateHealth();
 
         currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        checkDeath();
     }
 
     public void RecalculateHealth()
@@ -78,5 +84,14 @@ public class playerHealthManager : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Player died!");
+        battleAudioManager.PlayPlayerDeadSound();
+    }
+
+    private void checkDeath()
+    {
+        if (currentHealth <= 0 && !isDead)
+        {
+            Die();
+        }
     }
 }
