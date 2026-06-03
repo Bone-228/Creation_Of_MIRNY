@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed86e343b81f2644816f268380ffef3, type: 3}
+  m_Name: LorePart2
+  m_EditorClassIdentifier: Assembly-CSharp::LoreData
+  title: REPORT N.20012002
+  loreText: "Year 2001. Using the Volot device, the first expedition into the first
+    phase of the subspace was carried out. Communication between the exploration
+    team and the engineers remained stable. Eventually, the following was discovered:
+    the robots that had previously assisted in Mirium mining had become hostile and
+    began attacking the exploration team. All of their actions\u2014attacks and retreats
+    alike\u2014were chaotic and uncoordinated. During the second expedition, an armed
+    unit was sent to accompany the exploration team. However, things turned out far
+    worse than the scientists had expected. This time, the robots\u2019 movements
+    were no longer chaotic\u2014they knew exactly what they were doing, using various
+    tactics as if they were being controlled. This provided the scientists with a
+    crucial insight: Mirium is intelligent and capable of adaptation. After several
+    successful expeditions, the military decided to use Mirium in the production
+    of weapons for protecting exploration teams. As expected, Mirium replicated these
+    weapons, and the fight against robots infected with Mirium became significantly
+    more difficult. These machines were designated as the \u201CLost Ones.\u201D\n\n
+    Year 2002. A new research complex, \u201CBabylon,\u201D established to deal with
+    the Mirium catastrophe in the Mirny-13 exclusion zone, announced the existence
+    of the second and third phases of the subspace. In each of these phases, visibility
+    gradually decreases due to dense fog. The Lost Ones are present in all phases,
+    and with each deeper level they become more intelligent. They also become more
+    aggressive, and their physical capabilities increase every time an exploration
+    unit advances to a new phase. However, no one in the facility could have imagined
+    that this so-called \u201Crabbit hole\u201D might be even deeper... One of the
+    exploration teams reported that after collecting a sufficient amount of Mirium
+    in the third phase of the subspace, the entire group was transported to the fourth
+    phase. At first glance, this phase was almost identical to the others, with one
+    crucial difference\u2014a massive entity awaited there, surpassing all other
+    Lost Ones in both size and physical power. The exploration team also noticed
+    that this entity was guarding a strange levitating object similar to the allied
+    Volot. It was surrounded by two massive black-violet pillars capable of summoning
+    Lost Ones from other parts of the subspace to assist the monster. Scientists
+    assumed it was a modified version of Volot, created either by Mirium itself or
+    by an unknown entity within the subspace. The entity from the fourth phase was
+    named the \u201CGuardian,\u201D and the Mirium-altered device was designated
+    the \u201CDark Tower.\u201D"
