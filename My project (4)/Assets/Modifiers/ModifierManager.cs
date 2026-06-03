@@ -1,9 +1,13 @@
 using UnityEngine;
-
+using TMPro;
 public class ModifierManager : MonoBehaviour
 {
     public playerHealthManager healthManager;
     public PlayerMovement playerMovement;
+
+    public GameManager gameManager;
+    public TMP_Text playerMiriumText;
+
     void Start()
     {
         if (healthManager == null)
@@ -21,7 +25,10 @@ public class ModifierManager : MonoBehaviour
             healthManager.RecalculateHealth();
         }
     }
-
+    private void Update()
+    {
+        playerMiriumText.text = GameManager.Instance.mirium.ToString();
+    }
     public void UnlockModifier(ModifierData modifier)
     {
         if (!GameManager.Instance.unlockedModifiers.Contains(modifier))

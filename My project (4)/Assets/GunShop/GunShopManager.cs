@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
-
+using TMPro;
 public class GunShopManager : MonoBehaviour
 {
     // ───────────────────────── BUY ─────────────────────────
+    public GameManager gameManager;
+    public TMP_Text playerScrapsText;
 
+    private void Update()
+    {
+        playerScrapsText.text = GameManager.Instance.playerScraps.ToString();
+    }
     public void BuyGun(GunData gun)
     {
         if (gun == null) return;

@@ -16,6 +16,8 @@ public class GunShopItemUI : MonoBehaviour
 
     public GunShopManager shopManager;
 
+
+
     void Start()
     {
         shopManager = FindFirstObjectByType<GunShopManager>();
@@ -34,6 +36,7 @@ public class GunShopItemUI : MonoBehaviour
         gunNameText.text = gunData.gunName;
         gunPriceText.text = "Price: " + gunData.gunPrice;
         gunIconImage.sprite = gunData.gunIcon;
+
 
         bool owned = GameManager.Instance.OwnsGun(gunData);
 
