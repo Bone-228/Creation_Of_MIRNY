@@ -6403,14 +6403,17 @@ MonoBehaviour:
   musicSource: {fileID: 1268497866}
   sfxSource: {fileID: 2049094370}
   safe_zone_music: {fileID: 8300000, guid: 4bc8a0457f1d5b645afa2f3299368f39, type: 3}
-  button_click: {fileID: 8300000, guid: 09830584f7427004aa6b4e8050ed8a3d, type: 3}
   faze1_music: {fileID: 8300000, guid: 2ba901bd67e09834c87078e4572ba9fd, type: 3}
   faze2_music: {fileID: 8300000, guid: 006c1723056743849b52b78a0831fb0e, type: 3}
   faze3_music: {fileID: 8300000, guid: 068cab02d92105a41a61e9422ef042ae, type: 3}
+  death_music: {fileID: 8300000, guid: 8e1f3cfe55d2d8143a6258014c322c28, type: 3}
+  button_click: {fileID: 8300000, guid: 09830584f7427004aa6b4e8050ed8a3d, type: 3}
   walking_player: {fileID: 8300000, guid: e18f2a267dc1b134f80498d90845f98e, type: 3}
   running_player: {fileID: 8300000, guid: b7bdd9c19e07df04596b58f15e00e919, type: 3}
   phase_change_sound: {fileID: 8300000, guid: ac08f9bbc727cd04399f0f6fc0319c35, type: 3}
   player_dead_sound: {fileID: 8300000, guid: e1e0579a852dcbb4facd4b321ce4332a, type: 3}
+  player_hit_sound: {fileID: 8300000, guid: 00dc4e5dc098b72458c23a0de47d7d53, type: 3}
+  enemy_hit_sound: {fileID: 8300000, guid: 74b04c548eb052943899b93bf5f7e2bf, type: 3}
 --- !u!1001 &51371054
 PrefabInstance:
   m_ObjectHideFlags: 0

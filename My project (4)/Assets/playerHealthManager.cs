@@ -57,6 +57,8 @@ public class playerHealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        battleAudioManager.PlayPlayerHitSound();
+
         if (isDead) return;
 
         currentHealth -= damage;
@@ -85,6 +87,7 @@ public class playerHealthManager : MonoBehaviour
         isDead = true;
         Debug.Log("Player died!");
         battleAudioManager.PlayPlayerDeadSound();
+        battleAudioManager.PlayDeathMusic();
     }
 
     private void checkDeath()

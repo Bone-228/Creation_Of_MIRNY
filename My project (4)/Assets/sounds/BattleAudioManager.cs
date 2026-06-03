@@ -8,16 +8,22 @@ public class BattleAudioManager : MonoBehaviour
     [SerializeField] AudioSource sfxSource;
 
     [Header("~~~~~~~~~~~~AUDIO CLIP REFERENCES~~~~~~~~~~~~")]
+
+    [Header("Music Clips")]
     public AudioClip safe_zone_music;
-    public AudioClip button_click;
     public AudioClip faze1_music;
     public AudioClip faze2_music;
     public AudioClip faze3_music;
+    public AudioClip death_music;
+
+    [Header("SFX Clips")]
+    public AudioClip button_click;
     public AudioClip walking_player;
     public AudioClip running_player;
     public AudioClip phase_change_sound;
     public AudioClip player_dead_sound;
-
+    public AudioClip player_hit_sound;
+    public AudioClip enemy_hit_sound;
     void Start()
     {
         PlayMenuMusic();
@@ -28,17 +34,10 @@ public class BattleAudioManager : MonoBehaviour
         musicSource.clip = safe_zone_music;
         musicSource.Play();
     }
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SFX~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public void PlayButtonClick()
+
+    public void PlayFazeOne()
     {
-        sfxSource.clip = button_click;
-        sfxSource.Play();
-    }
-
-
-    public void PlayFazeOne() 
-    { 
         musicSource.clip = faze1_music;
         musicSource.Play();
     }
@@ -49,12 +48,37 @@ public class BattleAudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlayFazeThree() 
-    { 
+    public void PlayFazeThree()
+    {
         musicSource.clip = faze3_music;
         musicSource.Play();
     }
 
+    public void PlayDeathMusic()
+    {
+        musicSource.clip = death_music;
+        musicSource.Play();
+    }
+
+    public void stopAllMusic()
+    {
+        if (musicSource == null)
+            return;
+
+        // If death music is playing, DO NOT stop it
+        if (musicSource.clip == death_music && musicSource.isPlaying)
+            return;
+
+        musicSource.Stop();
+    }
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SFX~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    public void PlayButtonClick()
+    {
+        sfxSource.clip = button_click;
+        sfxSource.Play();
+    }
 
     public void PlaySelectedSound(AudioClip selectedClip) 
     { 
@@ -110,6 +134,18 @@ public class BattleAudioManager : MonoBehaviour
     public void PlayPlayerDeadSound() 
     { 
         sfxSource.clip = player_dead_sound;
+        sfxSource.Play();
+    }
+
+    public void PlayPlayerHitSound()
+    {
+        sfxSource.clip = player_hit_sound;
+        sfxSource.Play();
+    }
+
+    public void PlayEnemyHitSound()
+    {
+        sfxSource.clip = enemy_hit_sound;
         sfxSource.Play();
     }
 }

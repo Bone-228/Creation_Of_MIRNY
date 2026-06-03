@@ -274,6 +274,7 @@ public class RangedWeapon : Weapon
 
     private IEnumerator HitMarkerRoutine()
     {
+        battleAudioManager.PlayEnemyHitSound();
         hitMarkerObject.SetActive(true);
 
         yield return new WaitForSeconds(hitMarkerShowTime);
