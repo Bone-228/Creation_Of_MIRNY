@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed86e343b81f2644816f268380ffef3, type: 3}
+  m_Name: LorePart1
+  m_EditorClassIdentifier: Assembly-CSharp::LoreData
+  title: REPORT N.1936565
+  loreText: "Year 1995, the city of Mirny.\n\nAt that time, Soviet engineers succeeded
+    in automating diamond mining in the Mir crater using humanoid robots. During
+    the diamond extraction operations, a previously unknown and peculiar dark-purple
+    substance was discovered. It possessed incredible properties unlike anything
+    humanity had ever seen before. The origin of this substance was unknown at the
+    time...\n\nThe substance was named Mirium, after the city where it was found.
+    It was known that Mirium could lift objects of various weights into the air,
+    whether a small stone or a massive ship. Neither civilians, scientists, nor soldiers
+    could resist the temptation to use these abilities for their own\u2014perhaps
+    not always noble\u2014purposes, until one tragic incident...\n\nA worker was
+    brought to the infirmary who frequently complained of hearing strange sounds,
+    as if distorted speech. The doctors decided to give him a day off. However, by
+    the very next day, new symptoms appeared\u2014violent fits of aggression, panic
+    attacks, muttering, and insomnia. The same symptoms gradually began appearing
+    in more and more employees of the facility. The doctors had no idea that Mirium
+    was behind it all...\n\nThere were also increasing reports that the robots were
+    behaving differently from how they were supposed to."

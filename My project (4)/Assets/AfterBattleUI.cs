@@ -22,6 +22,10 @@ public class AfterBattleUI : MonoBehaviour
 
     public BattleAudioManager battleAudioManager;
 
+    public LoreData loreData;
+
+    public LoreUI loreUI;
+
     public playerHealthManager playerHealthManager;
     [Header("PLAYER")]
     public PlayerMovement playerMovement;
@@ -92,5 +96,9 @@ public class AfterBattleUI : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+
+        loreUI.ShowLore(loreData);
+
+
     }
 }
