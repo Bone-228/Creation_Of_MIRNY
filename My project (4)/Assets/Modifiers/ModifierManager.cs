@@ -35,6 +35,8 @@ public class ModifierManager : MonoBehaviour
         {
             GameManager.Instance.unlockedModifiers.Add(modifier);
 
+            GameManager.Instance.mirium -= modifier.miriumRequired;
+
             Debug.Log($"Unlocked modifier: {modifier.modifierName}");
         }
     }
