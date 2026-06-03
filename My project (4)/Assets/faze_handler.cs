@@ -35,6 +35,7 @@ public class faze_handler : MonoBehaviour
 
     public TextMeshProUGUI mirium_collector_player_text;
 
+
     [Header("Mirium Progress Bar")]
     public Image miriumFillImage;
 
@@ -67,11 +68,13 @@ public class faze_handler : MonoBehaviour
             mirium >= faze2Border)
         {
             ActivateFaze2();
+            UpdateUI(mirium);
         }
         else if (currentFaze == 2 &&
                  mirium >= faze3Border)
         {
             ActivateFaze3();
+            UpdateUI(mirium);
         }
 
         // ───────────────────────── RUN FINISH ─────────────────────────
@@ -105,6 +108,10 @@ public class faze_handler : MonoBehaviour
 
     void ActivateFaze2()
     {
+        ResetRunMirium();
+
+        miriumFillImage.fillAmount = 0f;
+
         battleAudioManager.PlayPhaseChangeSound();
         battleAudioManager.PlayFazeTwo();
 
@@ -119,14 +126,14 @@ public class faze_handler : MonoBehaviour
 
         OnFazeChanged?.Invoke(currentFaze);
 
-        ResetRunMirium();
-
         TeleportToRandomLocation();
-
     }
 
     void ActivateFaze3()
     {
+        ResetRunMirium();
+
+        miriumFillImage.fillAmount = 0f;
         battleAudioManager.PlayPhaseChangeSound();
         battleAudioManager.PlayFazeThree();
 
@@ -141,7 +148,7 @@ public class faze_handler : MonoBehaviour
 
         OnFazeChanged?.Invoke(currentFaze);
 
-        ResetRunMirium();
+
 
         TeleportToRandomLocation();
     }
@@ -288,26 +295,32 @@ public class faze_handler : MonoBehaviour
 
         float progress = 0f;
 
+        // Phase 1: 0 -> 90
         if (currentFaze == 1)
         {
             progress =
                 (float)mirium / faze2Border;
         }
+
+        // Phase 2: Mirium resets to 0 after phase change
         else if (currentFaze == 2)
         {
             progress =
-                (float)(mirium - faze2Border) /
+                (float)mirium /
                 (faze3Border - faze2Border);
         }
-        else
+
+        // Phase 3: Mirium resets again
+        else if (currentFaze == 3)
         {
-            progress = 1f;
+            progress =
+                (float)mirium /
+                (backToSafe - faze3Border);
         }
 
         progress = Mathf.Clamp01(progress);
 
-        miriumFillImage.fillAmount =
-            progress;
+        miriumFillImage.fillAmount = progress;
     }
 
     public void ControllPlayerHealth() 

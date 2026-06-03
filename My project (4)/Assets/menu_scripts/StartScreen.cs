@@ -10,6 +10,25 @@ public class StartScreen : MonoBehaviour
 
     private bool started = false;
 
+    private void Start()
+    {
+        // In case we're returning from gameplay
+        Time.timeScale = 1f;
+
+        // Reset start screen state
+        started = false;
+
+        // Show "Press Any Key"
+        if (pressAnyKeyPanel != null)
+            pressAnyKeyPanel.SetActive(true);
+
+        // Hide main menu until a key is pressed
+        if (mainMenuPanel != null)
+            mainMenuPanel.SetActive(false);
+
+        Debug.Log("StartScreen initialized.");
+    }
+
     void Update()
     {
         if (!started && Input.anyKeyDown)
@@ -21,11 +40,13 @@ public class StartScreen : MonoBehaviour
 
     IEnumerator ShowMainMenu()
     {
-        yield return StartCoroutine(fader.FadeOut(1f));
+        if (fader != null)
+            yield return StartCoroutine(fader.FadeOut(1f));
 
         pressAnyKeyPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
 
-        yield return StartCoroutine(fader.FadeIn(1f));
+        if (fader != null)
+            yield return StartCoroutine(fader.FadeIn(1f));
     }
 }
