@@ -6407,6 +6407,7 @@ MonoBehaviour:
   faze2_music: {fileID: 8300000, guid: 006c1723056743849b52b78a0831fb0e, type: 3}
   faze3_music: {fileID: 8300000, guid: 068cab02d92105a41a61e9422ef042ae, type: 3}
   death_music: {fileID: 8300000, guid: 8e1f3cfe55d2d8143a6258014c322c28, type: 3}
+  survive_music: {fileID: 8300000, guid: 30990158b59bb974686ed4122d4ca053, type: 3}
   button_click: {fileID: 8300000, guid: 09830584f7427004aa6b4e8050ed8a3d, type: 3}
   walking_player: {fileID: 8300000, guid: e18f2a267dc1b134f80498d90845f98e, type: 3}
   running_player: {fileID: 8300000, guid: b7bdd9c19e07df04596b58f15e00e919, type: 3}
@@ -6414,6 +6415,8 @@ MonoBehaviour:
   player_dead_sound: {fileID: 8300000, guid: e1e0579a852dcbb4facd4b321ce4332a, type: 3}
   player_hit_sound: {fileID: 8300000, guid: 00dc4e5dc098b72458c23a0de47d7d53, type: 3}
   enemy_hit_sound: {fileID: 8300000, guid: 74b04c548eb052943899b93bf5f7e2bf, type: 3}
+  enemy_fire_sound: {fileID: 8300000, guid: 2f1e6e882571e204b9899963cb0908d0, type: 3}
+  enemy_die: {fileID: 8300000, guid: d833bc32149abe14bb5459378738f525, type: 3}
 --- !u!1001 &51371054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89329,6 +89332,7 @@ MonoBehaviour:
   phasesText: {fileID: 656003551}
   rewardText: {fileID: 1770099960}
   battleui: {fileID: 1380867780}
+  battleAudioManager: {fileID: 51155744}
   playerHealthManager: {fileID: 9183412082485559098}
   playerMovement: {fileID: 4516561156935298696}
   playerCamera: {fileID: 963194230}
@@ -258565,6 +258569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_melee
       objectReference: {fileID: 0}
+    - target: {fileID: 8810798488463529818, guid: 2628e198a23a5bc47924bfb70cf87482, type: 3}
+      propertyPath: battleAudioManager
+      value: 
+      objectReference: {fileID: 51155744}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -261531,6 +261539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8881997924591941687, guid: 4740e7a94f056324b8e8157083276c87, type: 3}
+      propertyPath: battleAudioManager
+      value: 
+      objectReference: {fileID: 51155744}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -272671,6 +272683,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4810395634371128093}
+    - target: {fileID: 763404019644939033, guid: ca7a84bcad52c49449b35de7608a88aa, type: 3}
+      propertyPath: battleAudioManager
+      value: 
+      objectReference: {fileID: 51155744}
     - target: {fileID: 7287979442302464641, guid: ca7a84bcad52c49449b35de7608a88aa, type: 3}
       propertyPath: m_Name
       value: enemy_range_prototype_1
@@ -272719,6 +272735,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 4810395634371128093}
+    - target: {fileID: 9086946860895258356, guid: ca7a84bcad52c49449b35de7608a88aa, type: 3}
+      propertyPath: battleAudioManager
+      value: 
+      objectReference: {fileID: 51155744}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

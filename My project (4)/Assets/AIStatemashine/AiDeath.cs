@@ -7,8 +7,10 @@ public class AiDeath : AiState
 
     public void Enter(AiAgent agent)
     {
+        
         if (agent == null)
             return;
+        agent.battleAudioManager.PlayEnemyDie();
 
         agent.ragdollDebug.EnableRagdoll();
         agent.navMeshAgent.speed = 0f;

@@ -4,8 +4,8 @@ public class BattleAudioManager : MonoBehaviour
 {
     [Header("~~~~~~~~~~~~AUDIO SOURCE REFERENCES~~~~~~~~~~~~")]
 
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource sfxSource;
 
     [Header("~~~~~~~~~~~~AUDIO CLIP REFERENCES~~~~~~~~~~~~")]
 
@@ -15,6 +15,7 @@ public class BattleAudioManager : MonoBehaviour
     public AudioClip faze2_music;
     public AudioClip faze3_music;
     public AudioClip death_music;
+    public AudioClip survive_music;
 
     [Header("SFX Clips")]
     public AudioClip button_click;
@@ -24,6 +25,8 @@ public class BattleAudioManager : MonoBehaviour
     public AudioClip player_dead_sound;
     public AudioClip player_hit_sound;
     public AudioClip enemy_hit_sound;
+    public AudioClip enemy_fire_sound;
+    public AudioClip enemy_die;
     void Start()
     {
         PlayMenuMusic();
@@ -70,6 +73,12 @@ public class BattleAudioManager : MonoBehaviour
             return;
 
         musicSource.Stop();
+    }
+
+    public void PlaySurviveMusic()
+    {
+        musicSource.clip = survive_music;
+        musicSource.Play();
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SFX~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,6 +155,18 @@ public class BattleAudioManager : MonoBehaviour
     public void PlayEnemyHitSound()
     {
         sfxSource.clip = enemy_hit_sound;
+        sfxSource.Play();
+    }
+
+    public void PlayEnemyShootSound() 
+    { 
+        sfxSource.clip = enemy_fire_sound;
+        sfxSource.Play();
+    }
+
+    public void PlayEnemyDie() 
+    { 
+        sfxSource.clip = enemy_die;
         sfxSource.Play();
     }
 }

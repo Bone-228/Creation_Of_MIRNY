@@ -86,8 +86,6 @@ public class playerHealthManager : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Player died!");
-        battleAudioManager.PlayPlayerDeadSound();
-        battleAudioManager.PlayDeathMusic();
     }
 
     private void checkDeath()

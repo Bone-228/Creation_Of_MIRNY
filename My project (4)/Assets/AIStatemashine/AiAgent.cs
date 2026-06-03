@@ -12,6 +12,9 @@ public class AiAgent : MonoBehaviour
 
     public Transform player;
 
+    public BattleAudioManager battleAudioManager;
+
+
     public float sightSpotDistance = 20f;
 
     public int miriumValue = 10; // ✅ changed to int (better for currency)

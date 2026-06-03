@@ -22,6 +22,8 @@ public class enemy_range_fire : MonoBehaviour
     private Coroutine fireCoroutine;
     private Coroutine muzzleFlashCoroutine;
 
+    public BattleAudioManager battleAudioManager;
+
     void Start()
     {
         if (animator == null)
@@ -64,7 +66,7 @@ public class enemy_range_fire : MonoBehaviour
     private IEnumerator FireLoop()
     {
         isFiring = true;
-
+        battleAudioManager.PlayEnemyShootSound();
         while (player != null &&
                IsPlayerInRange() &&
                animator.GetBool(aimingParameter))

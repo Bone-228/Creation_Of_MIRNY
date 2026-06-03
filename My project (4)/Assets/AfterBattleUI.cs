@@ -20,6 +20,7 @@ public class AfterBattleUI : MonoBehaviour
 
     public GameObject battleui;
 
+    public BattleAudioManager battleAudioManager;
 
     public playerHealthManager playerHealthManager;
     [Header("PLAYER")]
@@ -39,6 +40,16 @@ public class AfterBattleUI : MonoBehaviour
 
     public void Open()
     {
+        if(RunStatistics.playerDied)
+        {
+            battleAudioManager.musicSource.PlayOneShot(battleAudioManager.player_dead_sound);
+            battleAudioManager.PlayDeathMusic();
+        }
+        else
+        {
+            battleAudioManager.PlaySurviveMusic();
+        }
+
         Debug.Log("Opening After Battle UI");
 
         panel.SetActive(true);
