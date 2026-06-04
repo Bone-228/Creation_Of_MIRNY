@@ -133,62 +133,37 @@ public class RangedWeapon : Weapon
         if (crosshair != null)
         {
             Camera rectCamera = null;
-
-            if (uiCanvas != null &&
-                uiCanvas.renderMode != RenderMode.ScreenSpaceOverlay)
+            if (uiCanvas != null && uiCanvas.renderMode != RenderMode.ScreenSpaceOverlay)
             {
                 rectCamera = uiCanvas.worldCamera;
             }
-
-            screenPoint = RectTransformUtility.WorldToScreenPoint(
-                rectCamera,
-                crosshair.position
-            );
+            screenPoint = RectTransformUtility.WorldToScreenPoint(rectCamera,crosshair.position);
         }
         else
         {
-            screenPoint = new Vector2(
-                Screen.width * 0.5f,
-                Screen.height * 0.5f
-            );
+            screenPoint = new Vector2(Screen.width * 0.5f,Screen.height * 0.5f);
         }
 
         Camera cam = playerCamera != null ? playerCamera : Camera.main;
         Ray ray = cam.ScreenPointToRay(screenPoint);
-
         RaycastHit hit;
         Vector3 trailTarget;
-
         if (Physics.Raycast(ray, out hit, bulletRange))
         {
             Debug.Log("We hit " + hit.collider.name);
-
             trailTarget = hit.point;
-
-            // Bullet impact effect
             if (bulletImpactEffect != null)
             {
-                GameObject impact = Instantiate(
-                    bulletImpactEffect,
-                    hit.point,
-                    Quaternion.LookRotation(hit.normal)
-                );
-
+                GameObject impact = Instantiate(bulletImpactEffect,hit.point, Quaternion.LookRotation(hit.normal));
                 impact.transform.SetParent(hit.collider.transform, true);
                 Destroy(impact, 2f);
             }
-
             // Rigidbody force
             var rb = hit.collider.GetComponent<Rigidbody>();
             if (rb)
             {
-                rb.AddForceAtPosition(
-                    ray.direction * 5f,
-                    hit.point,
-                    ForceMode.Impulse
-                );
+                rb.AddForceAtPosition(ray.direction * 5f,hit.point,ForceMode.Impulse);
             }
-
             // Regular hitbox damage
             var hitbox = hit.collider.GetComponent<HitBox>();
             if (hitbox)
@@ -196,13 +171,10 @@ public class RangedWeapon : Weapon
                 hitbox.OnRayCastHit(this);
                 ShowHitMarker();
             }
-
             // Turret destruction logic
             if (hit.collider.CompareTag("turretDamage"))
             {
-                HitBoxTurret turretHitbox =
-                    hit.collider.GetComponent<HitBoxTurret>();
-
+                HitBoxTurret turretHitbox = hit.collider.GetComponent<HitBoxTurret>();
                 if (turretHitbox != null)
                 {
                     turretHitbox.HitByRaycast();
@@ -214,16 +186,10 @@ public class RangedWeapon : Weapon
         {
             trailTarget = ray.origin + ray.direction * bulletRange;
         }
-
         // Bullet trail
         if (bulletTrailPrefab != null && firePoint != null)
         {
-            TrailRenderer trail = Instantiate(
-                bulletTrailPrefab,
-                firePoint.position,
-                Quaternion.identity
-            );
-
+            TrailRenderer trail = Instantiate(bulletTrailPrefab,firePoint.position,Quaternion.identity);
             StartCoroutine(AnimateTrail(trail, trailTarget));
         }
     }

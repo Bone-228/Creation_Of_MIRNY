@@ -114,44 +114,28 @@ public class enemy_sector_checker : MonoBehaviour
     {
         if (gates == null || gates.Length == 0)
             return;
-
-        List<gateControll> candidates =
-            new List<gateControll>();
+        List<gateControll> candidates = new List<gateControll>();
 
         foreach (gateControll gate in gates)
         {
             if (gate != null && gate.gateAnimator != null)
             {
-                int state =
-                    gate.gateAnimator.GetInteger("State");
-
-                // ONLY CLOSED GATES
+                int state = gate.gateAnimator.GetInteger("State");
                 if (state == 0)
                 {
                     candidates.Add(gate);
                 }
             }
         }
-
-        // No closed gates available
         if (candidates.Count == 0)
         {
             Debug.Log("No closed gates available.");
             return;
         }
-
-        int randomIndex =
-            Random.Range(0, candidates.Count);
-
-        gateControll selectedGate =
-            candidates[randomIndex];
-
+        int randomIndex = Random.Range(0, candidates.Count);
+        gateControll selectedGate = candidates[randomIndex];
         selectedGate.OpenGate();
-
-        Debug.Log(
-            "Opened gate: " +
-            selectedGate.gameObject.name
-        );
+        Debug.Log("Opened gate: " + selectedGate.gameObject.name);
     }
 
     // ───────────────────────── FAZE RESET ─────────────────────────

@@ -115169,7 +115169,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8925572736872188192, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
   m_PrefabInstance: {fileID: 7364030382465374286}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968529074}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ed7d22dff456c4783f4a4cab132e0a, type: 3}
@@ -115560,28 +115560,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 9081818028476780087, guid: 8e4da0ce4848e164d88a337c17e8df35, type: 3}
---- !u!1 &968529074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5885491482499194038, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
-  m_PrefabInstance: {fileID: 7364030382465374286}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &968529079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968529074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b8e53a5c64c114482fc61076f2843c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnalogGlitchCamera
-  _scanLineJitter: 0
-  _verticalJump: 0
-  _horizontalShake: 0
-  _colorDrift: 0
-  _shader: {fileID: 4800000, guid: 9779211e5055e844f8767cc09d2671c7, type: 3}
 --- !u!1001 &968972654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268110,6 +268088,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925572736872188192, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 4898322164406489320}
+    - target: {fileID: 8925572736872188192, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2017387736219203655}
@@ -268132,10 +268114,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5885491482499194038, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 968529079}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bee6a0d94a728d4189f575543d188cf, type: 3}
 --- !u!198 &7383318246527711799
 ParticleSystem:
