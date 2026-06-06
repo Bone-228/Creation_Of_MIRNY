@@ -66562,6 +66562,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 9081818028476780087, guid: 8e4da0ce4848e164d88a337c17e8df35, type: 3}
+--- !u!198 &550782676 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7764202840016415800, guid: ca7a84bcad52c49449b35de7608a88aa, type: 3}
+  m_PrefabInstance: {fileID: 8895456011467706755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &551151993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269931,7 +269936,7 @@ MonoBehaviour:
   firePoint: {fileID: 294393744308633207}
   reloadTime: 1.3
   bulletImpactEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
-  muzzleFlash: {fileID: 5862708354961219375}
+  muzzleFlash: {fileID: 550782676}
   bulletTrailPrefab: {fileID: -2584203957564960130, guid: a83055133b692c54da6ef56eaa22c8a5, type: 3}
   trailSpeed: 250
   uiCanvas: {fileID: 911627538}
