@@ -9,7 +9,7 @@ public class GunShopItemUI : MonoBehaviour
     [Header("UI")]
     public TMP_Text gunNameText;
     public TMP_Text gunPriceText;
-    public Image gunIconImage;
+
 
     public Button actionButton;
     public TMP_Text buttonText;
@@ -35,7 +35,6 @@ public class GunShopItemUI : MonoBehaviour
 
         gunNameText.text = gunData.gunName;
         gunPriceText.text = "Price: " + gunData.gunPrice;
-        gunIconImage.sprite = gunData.gunIcon;
 
 
         bool owned = GameManager.Instance.OwnsGun(gunData);
