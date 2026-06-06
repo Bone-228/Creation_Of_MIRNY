@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed86e343b81f2644816f268380ffef3, type: 3}
+  m_Name: LorePart3
+  m_EditorClassIdentifier: Assembly-CSharp::LoreData
+  title: REPORT N.200520060610
+  loreText: "Year 2005 \n\nThe Babylon Research Complex continued its efforts to
+    stop the attacks of infected robots on the cities surrounding the Mirny-13 Exclusion
+    Zone, but all attempts proved futile. Every time the scientists developed a new
+    solution, the enemy adapted. The Generals would devise new tactics, and Mirium
+    would immediately adjust its forces, creating countermeasures to prevent defeat.
+    Everything changed when one of our exploration teams discovered an abandoned
+    German military base dating back to World War II within one of the deeper phases
+    of the subspace. It turned out that German scientists had also learned how to
+    utilize Mirium for military and scientific purposes. They had begun developing
+    a project known as \"Dark Edelweiss.\" The project's objective was the deployment
+    of Mirium Gates at strategic attack points. These points could be established
+    virtually anywhere\u2014on the front lines or deep behind enemy lines. It would
+    have been the ultimate form of blitzkrieg warfare, perfected beyond anything
+    previously imagined. However, the project never succeeded. The Germans required
+    a special beacon capable of guiding personnel through the gates and back again.
+    Because of this limitation, most of their facilities remained abandoned, while
+    the majority of their personnel operated within the deepest phases of Mirny's
+    subspace. What interested us most, however, were their experimental Mirium-based
+    super-bombs. These devices possessed no destructive power in the conventional
+    sense. Instead, they completely suppressed the properties of Mirium within the
+    blast radius. This discovery could become the key to the success of all scientific
+    and military efforts. \n\nJune 6, 2006 \n\nToday, we are deploying our final
+    reconnaissance team to deliver a Mirium super-bomb and permanently seal the Gates.
+    We still do not know what consequences this mission may have for the team. Mirium\u2014or
+    whatever intelligence exists behind it\u2014may adapt to our strategy and find
+    a way to prevent the mission from succeeding. \n\nJune 10, 2006 \n\nOur final
+    reconnaissance team successfully delivered the bomb to the epicenter of the Fourth
+    Phase and detonated it. Shortly after the explosion, the Mirny-13 Zone began
+    to recover. The effects of Mirium gradually weakened, and the surrounding area
+    slowly started returning to normal. At this time, the Babylon Research Complex
+    has begun clearing the zone of remaining Mirium contamination and has temporarily
+    placed the entire Mirny region under quarantine. The Complex will make every
+    effort to ensure that both former and future residents can once again settle
+    in the city and begin a new life. All inventions, devices, and technologies based
+    on Mirium must be destroyed immediately. All research records are to be classified
+    indefinitely. Today, we are relieved to report that we have finally shattered
+    the twisted mirror that haunted our reality."

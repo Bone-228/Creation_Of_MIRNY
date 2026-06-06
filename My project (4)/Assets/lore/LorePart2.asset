@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LorePart2
   m_EditorClassIdentifier: Assembly-CSharp::LoreData
   title: REPORT N.20012002
-  loreText: "Year 2001. Using the Volot device, the first expedition into the first
-    phase of the subspace was carried out. Communication between the exploration
+  loreText: "Year 2001. \n\nUsing the Volot device, the first expedition into the
+    first phase of the subspace was carried out. Communication between the exploration
     team and the engineers remained stable. Eventually, the following was discovered:
     the robots that had previously assisted in Mirium mining had become hostile and
     began attacking the exploration team. All of their actions\u2014attacks and retreats
@@ -28,8 +28,8 @@ MonoBehaviour:
     of weapons for protecting exploration teams. As expected, Mirium replicated these
     weapons, and the fight against robots infected with Mirium became significantly
     more difficult. These machines were designated as the \u201CLost Ones.\u201D\n\n
-    Year 2002. A new research complex, \u201CBabylon,\u201D established to deal with
-    the Mirium catastrophe in the Mirny-13 exclusion zone, announced the existence
+    Year 2002. \n\nA new research complex, \u201CBabylon,\u201D established to deal
+    with the Mirium catastrophe in the Mirny-13 exclusion zone, announced the existence
     of the second and third phases of the subspace. In each of these phases, visibility
     gradually decreases due to dense fog. The Lost Ones are present in all phases,
     and with each deeper level they become more intelligent. They also become more

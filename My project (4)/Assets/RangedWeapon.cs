@@ -127,9 +127,7 @@ public class RangedWeapon : Weapon
     protected virtual void DoShoot()
     {
         muzzleFlash?.Play();
-
         Vector2 screenPoint;
-
         if (crosshair != null)
         {
             Camera rectCamera = null;
@@ -143,7 +141,6 @@ public class RangedWeapon : Weapon
         {
             screenPoint = new Vector2(Screen.width * 0.5f,Screen.height * 0.5f);
         }
-
         Camera cam = playerCamera != null ? playerCamera : Camera.main;
         Ray ray = cam.ScreenPointToRay(screenPoint);
         RaycastHit hit;
