@@ -15,5 +15,5 @@ MonoBehaviour:
   modifierName: Sprinter
   description: gain speed bonus -> 1.5
   icon: {fileID: 21300000, guid: 3e377b0e138fa3b4092c2d4e66b4b77e, type: 3}
-  miriumRequired: 0
+  miriumRequired: 10
   speedBonus: 1.5

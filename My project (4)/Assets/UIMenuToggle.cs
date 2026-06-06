@@ -39,7 +39,7 @@ public class UIMenuToggle : MonoBehaviour
             playerCamera.enabled = false;
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     void CloseMenu()

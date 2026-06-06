@@ -20,7 +20,6 @@ public class ReturnToMainMenuTriger : MonoBehaviour
             Cursor.lockState = CursorLockMode.None; // Unlock cursor
             Cursor.visible = false; // Make cursor visible
             Time.timeScale = 1f;
-
             SceneManager.LoadScene(mainMenuSceneName);
         }
     }

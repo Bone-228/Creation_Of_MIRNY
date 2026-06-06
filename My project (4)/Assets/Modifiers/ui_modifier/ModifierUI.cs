@@ -15,6 +15,9 @@ public class ModifierUI : MonoBehaviour
 
     public ModifierData selectedModifier;
 
+
+
+
     public void ShowModifier(ModifierData data)
     {
         iconImage.sprite = data.icon;

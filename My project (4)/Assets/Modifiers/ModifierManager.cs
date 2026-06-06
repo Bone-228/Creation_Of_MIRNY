@@ -35,8 +35,6 @@ public class ModifierManager : MonoBehaviour
         {
             GameManager.Instance.unlockedModifiers.Add(modifier);
 
-            GameManager.Instance.mirium -= modifier.miriumRequired;
-
             Debug.Log($"Unlocked modifier: {modifier.modifierName}");
         }
     }
@@ -45,6 +43,10 @@ public class ModifierManager : MonoBehaviour
     {
         if (!GameManager.Instance.equippedModifiers.Contains(modifier))
         {
+            GameManager.Instance.mirium -= modifier.miriumRequired;
+
+            Debug.Log("player mirium - " + GameManager.Instance.mirium.ToString());
+
             GameManager.Instance.equippedModifiers.Add(modifier);
 
             Debug.Log($"Equipped modifier: {modifier.modifierName}");

@@ -15,4 +15,4 @@ MonoBehaviour:
   modifierName: Double Jump
   description: Press [SPACEBAR] while in the air two jump again
   icon: {fileID: 21300000, guid: 768cc005e8b977448a56cbc8a166cd87, type: 3}
-  miriumRequired: 0
+  miriumRequired: 50

@@ -16,4 +16,4 @@ MonoBehaviour:
   description: player health increase +20
   icon: {fileID: 21300000, guid: 913314c446354c64bb5d87837a085863, type: 3}
   miriumRequired: 25
-  healthBonus: 20
+  healthBonus: 50
