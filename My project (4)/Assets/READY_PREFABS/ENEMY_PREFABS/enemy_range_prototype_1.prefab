@@ -509,15 +509,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 152.84
+      value: 14.527756
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: -0.0002632141
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.47
+      value: -40.7779
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1593,10 +1593,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiAgent
   initialState: 2
-  navMeshAgent: {fileID: 0}
-  ragdollDebug: {fileID: 0}
-  healthBar: {fileID: 0}
+  navMeshAgent: {fileID: 6608144946488096036}
+  ragdollDebug: {fileID: 2588384001162244341}
+  healthBar: {fileID: 2371363058151033145}
   player: {fileID: 0}
+  battleAudioManager: {fileID: 0}
   sightSpotDistance: 50
   miriumValue: 10
   scrapsToGive: 20
@@ -1688,6 +1689,7 @@ MonoBehaviour:
   shootParameter: shoot
   muzzleFlash: {fileID: 7764202840016415800}
   muzzleFlashDelay: 0.05
+  battleAudioManager: {fileID: 0}
 --- !u!1 &7390807172771345060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8109829993498575500, guid: 36150a6af4ae7f749b5e7344b4b99b24, type: 3}
