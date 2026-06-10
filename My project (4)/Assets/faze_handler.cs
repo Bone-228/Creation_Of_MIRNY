@@ -56,6 +56,12 @@ public class faze_handler : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            FinishRun();
+        }
+
+
         if (playerCollector == null || runFinished)
             return;
 
@@ -293,34 +299,27 @@ public class faze_handler : MonoBehaviour
         if (miriumFillImage == null)
             return;
 
-        float progress = 0f;
+        float target = 1f;
 
-        // Phase 1: 0 -> 90
-        if (currentFaze == 1)
+        switch (currentFaze)
         {
-            progress =
-                (float)mirium / faze2Border;
+            case 1:
+                target = faze2Border;
+                break;
+
+            case 2:
+                target = faze3Border;
+                break;
+
+            case 3:
+                target = backToSafe;
+                break;
         }
 
-        // Phase 2: Mirium resets to 0 after phase change
-        else if (currentFaze == 2)
-        {
-            progress =
-                (float)mirium /
-                (faze3Border - faze2Border);
-        }
-
-        // Phase 3: Mirium resets again
-        else if (currentFaze == 3)
-        {
-            progress =
-                (float)mirium /
-                (backToSafe - faze3Border);
-        }
-
-        progress = Mathf.Clamp01(progress);
-
-        miriumFillImage.fillAmount = progress;
+        miriumFillImage.fillAmount =
+            Mathf.Clamp01(
+                mirium / target
+            );
     }
 
     public void ControllPlayerHealth() 

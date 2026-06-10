@@ -600,8 +600,9 @@ MonoBehaviour:
   playerScraps: 0
   mirium: 0
   playerRunMirium: 0
-  ownedGuns: []
-  primaryGun: {fileID: 0}
+  ownedGuns:
+  - {fileID: 11400000, guid: 7e489613a475e794e87f75d411b9ddbd, type: 2}
+  primaryGun: {fileID: 11400000, guid: 7e489613a475e794e87f75d411b9ddbd, type: 2}
   secondaryGun: {fileID: 0}
   unlockedModifiers: []
   equippedModifiers: []
